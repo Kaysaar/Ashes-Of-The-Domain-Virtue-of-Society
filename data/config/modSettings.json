@@ -1,0 +1,9 @@
+{
+    "Cryo_but_better": {
+        "MAX_POP_GROWTH":10,
+        "POP_GROWTH_RATE": 2.0,
+        "ORGAN_HARVESTING_RATE":1,
+        "MORE_CHARGES_MODE":false,
+        "allowRemoteIndustryItemManagement":true
+    }
+}

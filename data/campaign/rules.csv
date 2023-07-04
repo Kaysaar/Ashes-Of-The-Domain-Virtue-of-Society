@@ -1,0 +1,62 @@
+id,trigger,conditions,script,text,options,notes
+#Cryosleeper Interactions,,,,,,
+,,,,,,
+#repair cryosleeper,,,,,,
+cryosleeper_new_dialog,BeginSalvage,$customType == derelict_cryosleeper score:2000,SetShortcut defaultLeave ESCAPE,"The long-haul cryosystems were built to last for centuries of interstellar travel so it's no surprise that most of the pod-support machinery reads as functional. While safe sleeper revival is beyond the capability of your fleet, towing the cryosleeper to a colony could make it benefit from a huge influx in population if it built facilities to awaken long-haul sleepers.
+
+Your executive officer cautions that it's unknown whether having sleepers make up a large percentage of a colony's population would cause any physical or psychological issues down the line.","0:cryosleeper_consider_moving:Consider repairing the Cryosleeper
+100:defaultLeave:Leave",
+cryosleeper_consider_moving,DialogOptionSelected,$option == cryosleeper_consider_moving,"$crewReq = 1000 0
+$metalsReq = 2000 0
+$tpReq = 5000 0
+ShowResCost crew $crewReq metals $metalsReq true rare_metals $tpReq true
+FireBest CA_can_repair_cryosleeper
+FireBest CA_cannot_repair_cryosleeper",,"0:CA_cryosleeper_repair:Repair the Cryosleeper
+100:defaultLeave:Leave",
+cryosleeper_can_repair,CA_can_repair_cryosleeper,"$player.metals >= $metalsReq
+$player.rare_metals >= $tpReq
+$player.crew >= $crewReq",$canAfford = true 0,,,
+cryosleeper_cannot_repair,CA_cannot_repair_cryosleeper,!$canAfford,SetEnabled CA_cryosleeper_repair false,,,
+cryosleeper_repaired,DialogOptionSelected,$option == CA_cryosleeper_repair,"RemoveCommodity metals $metalsReq
+RemoveCommodity rare_metals $tpReq
+CA_RepairCryosleeper
+AddShip $cryosleeper_info",,100:defaultLeave:Leave,
+#cryosleeper_repaired_text,CA_CryosleeperRepairInitiatedText,,,The cryosleeper has joined your fleet,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+#cryosleeper orbiring,,,,,,
+interaction_parcked_cryo,OpenInteractionDialog,$customType == parked_cryosleeper score:1000,ShowDefaultVisual,"That Cryosleeper has been put on stable orbit. It orbits near colony, as a reminder of technological and industrial might of Domain","0:parcked_cryo_market_continue:Decide to relocate cryosleeper from planet's orbit 
+1:defaultLeave:Leave",
+parcked_cryo_market_continue,DialogOptionSelected,$option == parcked_cryo_market_continue,,,"0:parcked_cryo_market_confirm:Confirm  
+1:defaultLeave:Leave",
+parcked_cryo_market_confirm,DialogOptionSelected,$option == parcked_cryo_market_confirm,"kaysaarRelocateRepairedCryosleeper
+AddShip $cryosleeper_info
+EndConversation","Consider this decision. If you do this, then growth of your colony would be halted where it is, moreover if Cryosleeper is practically empty there is no point actually of moving it",100:defaultLeave:Leave,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+#cryosleeper market interaction,,,,,,
+cryosleeper_market_option,PopulateOptions,"$hasMarket
+$menuState == main
+$tradeMode != NONE
+$faction.id == player
+PlayerFleetHasShipWithBaseHull ca_cryosleeper",SetShortcut defaultLeave ESCAPE ,"The Lieutanant of you fleet comes you with two options for now. First you can put cryosleeper on orbit, allowing population of that planet to grow past size 6, or hide it from eyes of public and establish industry that would supplied sector with organs, of course no one would ask questions about their source. Remember hiding Cryosleeper is pernament action.",25:cryo_market_continue:Consider your options with Cryosleeper,
+cryosleeper_market_continue,DialogOptionSelected,$option == cryo_market_continue,"FireBest can_park_cryo
+FireBest can_harvest_organs ",,"0:cryo_market_confirm:Place the cryosleeper in orbit
+1:cryo_harvester_confirm:Hide cryosleeper on planet for establishing organ harvesting opperations
+2:defaultLeave:Leave",
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+cryosleeper_market_can_park,can_park_cryo,$market.mc:cryo_in_system,SetEnabled cryo_market_confirm false,,,
+cryosleeper_market_can_harvest,can_harvest_organs,$market.mc:organ_harvesting_operations,SetEnabled cryo_harvester_confirm false,,,
+cryosleeper_harvester_operation,DialogOptionSelected,$option == cryo_harvester_confirm,kaysaarHarvestingOp,,100:defaultLeave:Leave,
+cryosleeper_market_confirm,DialogOptionSelected,$option == cryo_market_confirm,CA_RepairCryosleeper,,100:defaultLeave:Leave,
+,,,,,,

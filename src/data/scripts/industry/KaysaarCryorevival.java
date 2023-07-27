@@ -283,7 +283,10 @@ public class KaysaarCryorevival extends BaseIndustry implements MarketImmigratio
                             cryoOrbiting.getMemory().set(AodMemFlags.CRYOSLEEPER_DEPLETION_STAGE_2, true);
                         } else if (cryoOrbiting.getMemory().is(AodMemFlags.CRYOSLEEPER_DEPLETION_STAGE_2, true)) {
                             cryoOrbiting.getMemory().set(AodMemFlags.CRYOSLEEPER_DEPLETION_STAGE_2, false);
-                            cryoOrbiting.getMemory().set(AodMemFlags.CRYOSLEEPER_DEPLETION_STAGE_FINAL,true);
+                            cryoOrbiting.getMemory().set(AodMemFlags.CRYOSLEEPER_DEPLETION_STAGE_3,true);
+                        } else if (cryoOrbiting.getMemory().is(AodMemFlags.CRYOSLEEPER_DEPLETION_STAGE_3, true)) {
+                            cryoOrbiting.getMemory().set(AodMemFlags.CRYOSLEEPER_DEPLETION_STAGE_3, false);
+                            cryoOrbiting.getMemory().set(AodMemFlags.CRYOSLEEPER_DEPLETION_STAGE_FINAL, true);
                         } else {
                             cryoOrbiting.getMemory().set(AodMemFlags.CRYOSLEEPER_DEPLETION_STAGE_FINAL, true);
                         }

@@ -1,0 +1,17 @@
+eventId,name,options,isOneTime,isPermament,duration,plugin,cooldown,modId,imageId,,,,,
+harvest_of_year,Harvest Of Year,"harvest_of_year_op1:Distribue food amongst population
+harvest_of_year_op2:Sell additional surplus",false,false,360,data.colonyevents.events.HarvestOfYearEvent,720,aod_vos,harvest_of_year,,,,,
+comet_sighted,Comet Sighted,"comet_sighted_op1:I'm sure this will have no consequences whatsoever!
+comet_sighted_op2:Oh Ludd above, Moloch have risen! He comes!
+comet_sighted_op3:Does that comet look like Antimatter to you?
+comet_sighted_op4:This must be a carefully constructed ruse by Tri-Tachyon!
+comet_sighted_op5:I really hope that was an inspection fleet burning up in our atmosphere
+comet_sighted_op6:Quick, check if AI core is still there!
+comet_sighted_op7:If we had comet sense...
+comet_sighted_op8:So? It's just a comet...
+comet_sighted_op9:Is that Sophia?
+comet_sighted_op10:A warm thanks to many members of merchant's guild!
+comet_sighted_op11:Fools it's the abyss ship from RAT!
+comet_sighted_op12:I do not care who they send, I AM NOT PAYING TAXES!
+comet_sighted_op13:Its a bird, its a plane, no... its megabreve!",false,false,360,data.colonyevents.events.CometSightedEvent,720,aod_vos,comet_sighted,,,,,
+,,,,,,,,,,,,,,

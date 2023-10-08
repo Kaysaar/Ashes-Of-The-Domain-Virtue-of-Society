@@ -21,15 +21,15 @@ public class TriTachyonInvestmentEvent extends AoTDColonyEvent {
         prevDecisionId = currentDecision;
         if(currentDecision.equals("hh_op1")){
             currentlyAffectedMarket.addIndustry("tt_hq");
-            Global.getSector().getFaction(Factions.TRITACHYON).adjustRelationship(Global.getSector().getPlayerFaction().getId(),20);
+            Global.getSector().getFaction(Factions.TRITACHYON).adjustRelationship(Global.getSector().getPlayerFaction().getId(),0.2f);
         }
         if(currentDecision.equals("hh_op2")){
             currentlyAffectedMarket.addCondition("tt_smaller_investment");
-            Global.getSector().getFaction(Factions.TRITACHYON).adjustRelationship(Global.getSector().getPlayerFaction().getId(),10);
+            Global.getSector().getFaction(Factions.TRITACHYON).adjustRelationship(Global.getSector().getPlayerFaction().getId(),0.1f);
             Global.getSector().getPlayerFleet().getCargo().getCredits().add(350000);
         }
         if(currentDecision.equals("hh_op3")){
-            Global.getSector().getFaction(Factions.TRITACHYON).adjustRelationship(Global.getSector().getPlayerFaction().getId(),-20);
+            Global.getSector().getFaction(Factions.TRITACHYON).adjustRelationship(Global.getSector().getPlayerFaction().getId(),-0.2f);
 
         }
 

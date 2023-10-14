@@ -289,7 +289,7 @@ public class AoTDColonyEventManager {
     private static boolean validateEvent(MarketAPI marketAPI, AoTDColonyEvent event) {
         boolean canFire = !event.isOnGoing && event.cooldownBeforeEventCanOccur <= 0 && !event.isWaitingForDecision && event.canOccur(marketAPI);
         if (event.getSpec().isOneTimeEvent() && canFire) {
-            boolean unique = !event.haveFiredAtLeastOnce && event.getSpec().isOneTimeEvent();
+            boolean unique = !event.haveFiredAtLeastOnce ;
             return unique;
         }
         return canFire;

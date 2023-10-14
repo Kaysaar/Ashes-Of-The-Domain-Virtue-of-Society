@@ -51,6 +51,11 @@ public class TriTachyonBranchHQ extends BaseIndustry {
     }
 
     @Override
+    public boolean showWhenUnavailable() {
+        return false;
+    }
+
+    @Override
     public String getCanNotShutDownReason() {
         return "You can't shutdown this HQ branch, due to contract, that you have signed with Tri Tachyon investor for next "+(720-(int)daysSinceOpening)+" days.";
     }

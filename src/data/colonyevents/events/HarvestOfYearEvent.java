@@ -17,7 +17,7 @@ public class HarvestOfYearEvent extends AoTDColonyEvent {
             }
 
         }
-      return marketAPI.hasCondition(Conditions.FARMLAND_BOUNTIFUL)&&hasTag&&marketAPI.getSize()>3;
+      return false;
     }
 
     @Override

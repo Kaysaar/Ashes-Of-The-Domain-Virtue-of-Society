@@ -289,6 +289,6 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
         public void buttonPressed(Object buttonId) {
             super.buttonPressed(buttonId);
             delegate.reportButtonPressed(buttonId);
-        }
+            }
     }
 }

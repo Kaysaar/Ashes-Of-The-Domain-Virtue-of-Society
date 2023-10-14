@@ -34,4 +34,8 @@ public class PAGSMFuelHegemonyEvent extends AoTDColonyEvent {
         tooltip.addPara("Should you refuse our generous offer, we shall do so called \"Hostile Takeover\"",10f);
     }
 
+    @Override
+    public void executeDecision(String currentDecision) {
+        super.executeDecision(currentDecision);
+    }
 }

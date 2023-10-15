@@ -42,6 +42,7 @@ public class AoTDColonyEvent  {
     }
     public void executeDecision(String currentDecision){
         currentlyAffectedMarket.addCondition("fired_event");
+        this.haveFiredAtLeastOnce = true;
     }
     public boolean canShowOptionOutcomesBeforeDeciding(){
         return true;

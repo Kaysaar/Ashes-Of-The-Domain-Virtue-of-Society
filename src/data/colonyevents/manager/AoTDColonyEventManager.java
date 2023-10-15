@@ -118,8 +118,6 @@ public class AoTDColonyEventManager {
     }
 
     public void onGameLoad(boolean isGameSaveloaded) {
-        eventsSpec.clear();
-        eventsSpec.putAll(getSpecsFromFiles());
         reloadEvents();
         for (AoTDColonyEvent colonyEvent : events) {
             logger.info(colonyEvent.getSpec().getEventId() + "Spec and loaded class " + colonyEvent.getClass().getName());
@@ -243,9 +241,10 @@ public class AoTDColonyEventManager {
         AoTDColonyEvent eventChoosen = null;
         if (guaranteedNextEventId != null) {
             for (AoTDColonyEvent event : eventsList) {
+                if (!event.getSpec().getEventId().equals(guaranteedNextEventId)) continue;
                 if (!validateEvent(marketAPI, event))
                     continue;
-                if (!event.getSpec().getEventId().equals(guaranteedNextEventId)) continue;
+
                 event.isWaitingForDecision = true;
                 event.currentlyAffectedMarket = marketAPI;
                 logger.info("Event Picked");
@@ -306,14 +305,18 @@ public class AoTDColonyEventManager {
 
     public void reloadEvents() {
         Map<String, AoTDColonyEvent> eventsGeneratedFromSpecs = generateEventsFromSpec(eventsSpec);
-        List<AoTDColonyEvent> updatedEvents = new ArrayList<>();
+            List<AoTDColonyEvent> updatedEvents = new ArrayList<>();
+            List<AoTDColonyEvent> eventsBeforeUpdate = new ArrayList<>(events);
+         events.clear();
         for (AoTDColonyEvent colonyEvent : eventsGeneratedFromSpecs.values()) {
             boolean wasAlreadyInRepo = false;
             logger.info(colonyEvent.getClass().getName() + "Event VOS");
             AoTDColonyEvent event = null;
-            for (AoTDColonyEvent eventToChoose : events) {
+            for (AoTDColonyEvent eventToChoose : eventsBeforeUpdate) {
                 if (eventToChoose.getSpec().getEventId().equals(colonyEvent.getSpec().getEventId())) {
-                    event = eventToChoose;
+                    colonyEvent.haveFiredAtLeastOnce=eventToChoose.haveFiredAtLeastOnce;
+                    colonyEvent.prevDecisionId=eventToChoose.prevDecisionId;
+                    colonyEvent.isOnGoing=eventToChoose.isOnGoing;
                 }
             }
             updatedEvents.add(colonyEvent);

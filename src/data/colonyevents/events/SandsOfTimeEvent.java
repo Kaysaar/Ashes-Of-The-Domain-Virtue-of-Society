@@ -142,6 +142,12 @@ public class SandsOfTimeEvent extends AoTDColonyEvent {
                 AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 7;
                 AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
             }
+            else{
+                AoTDColonyEventManager.getInstance().guaranteedNextEventId = null;
+                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = null;
+                AoTDColonyEventManager.getInstance().lastEvent = 0;
+                super.executeDecision(currentDecision);
+            }
         }
         if (eventId.equals("accidental_finding_vault")) {
             prevDecisionId = currentDecision;

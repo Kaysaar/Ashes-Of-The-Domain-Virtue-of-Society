@@ -265,6 +265,7 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
         if(prev!=null&&prev.equals(selected)){
             eventToSolve.executeDecision(selected);
             eventToSolve.isWaitingForDecision = false;
+            eventToSolve.haveFiredAtLeastOnce=true;
             eventToSolve.cooldownBeforeEventCanOccur = eventToSolve.getSpec().getBaseCooldown();
             AoTDColonyEventManager.getInstance().updateEvent(eventToSolve);
             AoTDColonyEventManager.getInstance().onGoingEvent = null;

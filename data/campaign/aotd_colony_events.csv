@@ -1,6 +1,6 @@
-eventId,name,options,isOneTime,isPermament,duration,plugin,cooldown,modId,imageId,,,,,
+eventId,name,options,isOneTime,isPermament,plugin,cooldown,modId,imageId,weight,,,,,
 harvest_of_year,Harvest Of Year,"harvest_of_year_op1:Distribue food amongst population
-harvest_of_year_op2:Sell additional surplus",false,false,360,data.colonyevents.events.HarvestOfYearEvent,720,aod_vos,harvest_of_year,,,,,
+harvest_of_year_op2:Sell additional surplus",false,false,data.colonyevents.events.HarvestOfYearEvent,720,aod_vos,harvest_of_year,15000,,,,,
 comet_sighted,Comet Sighted,"comet_sighted_op1:I'm sure this will have no consequences whatsoever!
 comet_sighted_op2:Oh Ludd above, Moloch have risen! He comes!
 comet_sighted_op3:Does that comet look like Antimatter to you?
@@ -13,5 +13,38 @@ comet_sighted_op9:Is that Sophia?
 comet_sighted_op10:A warm thanks to many members of merchant's guild!
 comet_sighted_op11:Fools it's the abyss ship from RAT!
 comet_sighted_op12:I do not care who they send, I AM NOT PAYING TAXES!
-comet_sighted_op13:Its a bird, its a plane, no... its megabreve!",false,false,360,data.colonyevents.events.CometSightedEvent,720,aod_vos,comet_sighted,,,,,
-,,,,,,,,,,,,,,
+comet_sighted_op13:Its a bird, its a plane, no... its megabreve!",false,false,data.colonyevents.events.CometSightedEvent,120,aod_vos,comet_sighted,2000,,,,,
+accidental_finding,Sands of Time,"accidental_finding_op1:Order team to unseal vault's gates.
+accidental_finding_op2:Leave those doors and seal way to this vault.",true,false,data.colonyevents.events.SandsOfTimeEvent,720,aod_vos,sands_of_time_finding,5000,, ,,,
+accidental_finding_vault,Sands of Time - Vault,"vault_op1:Hack vault doors.
+vault_op2:Use antimatter charges to destroy vault's door.
+vault_op3:This vault might be dangerous, seal it!",true,false,data.colonyevents.events.SandsOfTimeEvent,720,aod_vos,sands_of_time_vault,5000,,,,,
+accidental_finding_vault_hacking,Sands of Time - Doors Opened,"accidental_finding_hacking_op1:Initiate local power surge with little amount of energy.
+accidental_finding_hacking_op2:Initalize power surge through entire facility.
+",true,false,data.colonyevents.events.SandsOfTimeEvent,720,aod_vos,sands_of_time_low_power,5000,,,,,
+accidental_finding_vault_trigger_defences,Sands of Time - Triggered Defences,accidental_finding_fighting_op1:Fight,true,false,data.colonyevents.events.SandsOfTimeEvent,720,aod_vos,sands_of_time_high_power,5000,,,,,
+accidental_finding_vault_outcome,Sands of Time - Facility Exploration,accidental_finding_conclusion_op1:Scavenge Facility,true,false,data.colonyevents.events.SandsOfTimeEvent,720,aod_vos,sands_of_time_outcome,5000,,,,,
+accidental_finding_vault_antimatter,Sands of Time - Structure Integrity Damaged,accidental_finding_antimatter_op1:Immidieatly Evacuate Expedition NOW!,true,false,data.colonyevents.events.SandsOfTimeEvent,720,aod_vos,sands_of_time_antimatter,5000,,,,,
+accidental_finding_vault_antimatter_outcome,Sands of Time - Irreversible Damage,accidental_finding_antimatter_outcome_op1:.....,true,false,data.colonyevents.events.SandsOfTimeEvent,720,aod_vos,sands_of_time_antimatter,5000,,,,,
+tri_tachyon_investment,Tri Tachyon's Helpful Hand,"hh_op1:Welcome the Board Member to our colony! This is an opportunity too good to pass up
+hh_op2:Politely Welcome them, but restrict their ability to invest in our industry to protect it from Tri-Tachyon influence
+hh_op3:Decline the deal using some official statement of wanting to stay neutral in Tri-Tachyon affairs.",false,false,data.colonyevents.events.TriTachyonInvestmentEvent,720,aod_vos,tt_investment,5000,,,,,
+eternal_slumber,Eternal Slumber,"es_op1:Seal entrance to this crypt.
+es_op2:Use this crypt to harvest organs.
+es_op3:Awaken all people, that have been put into cryosleep.",true,false,data.colonyevents.events.EternalSlumberEvent,720,aod_vos,awakening,5000,,,,,
+safety_concerns,Safety Concerns,"qa_op1:Increase safetry measures in factories!
+qa_op2:Ignore people's demands.",false,false,data.colonyevents.events.SafetyConcernsEvent,720,aod_vos,safety_conditions,5000,,,,,
+uaf_bakery_event,Baker's Diplomacy,"bd_op1:Sign the contract under your name
+bd_op2:Shoot them and give the exact contract to the UAF 
+bd_op3:Rip off the contract and publicly announce yourself as the inventor of those baked goods",true,true,data.colonyevents.events.UAFCakeEvent,720,uaf,uaf_bakery_event,5000,,,,,
+rebirth_of_hope,New Colossus,"nc_op1:From Ashes we rise.
+nc_op2:We will create our own legacy.",true,true,data.colonyevents.events.CrestOfPhoenixEvent,720,aod_vos,reclaimer,5000,,,,,
+theta_finding_facility,Black Site,"bs_op1:Send small team to investigate this facility.
+bs_op2:Fund huge expedition to those ruins and set up temporary facility.
+bs_op3:Ignore those ruins.",true,false,data.colonyevents.events.ThetaProjectEvent,10000,aod_core,theta_discovery,7000,,,,,
+theta_expl_fac,Project Charon?,bs_fac_op:Continiue with investigation.,true,false,data.colonyevents.events.ThetaProjectEvent,10000,aod_core,theta_discovery,7000,,,,,
+theta_expl_fac_continue,Project Charon - Exploration of Facility,"bs_fac_op1: Explore Main Server Room 
+bs_fac_op2: Explore Director's Office
+bs_fac_op3: Explore Storage Area ",true,false,data.colonyevents.events.ThetaProjectEvent,10000,aod_core,theta_discovery,7000,,,,,
+archimedes_usage,Question of Archimedes,"arch_op1:We should dismantle this supercomputer.It served it's purpouse.
+arch_op2:We will use it to help conducting our research.",true,false,data.colonyevents.events.ArchimedesUsageEvent,10000,aod_core,archimedes_question,7000,,,,,

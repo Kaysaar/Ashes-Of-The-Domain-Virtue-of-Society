@@ -1,7 +1,13 @@
 name,id,planetary,decivRemove,script,desc,icon,order
-Orbiting Cryosleeper,cryo_in_system,TRUE,,data.scripts.campaign.econ.conditions.cryo_in_system,"Cryosleeper operation brings system demographics to a new level, some say that not all is lost and the Domain times are upon us.
-Only 1 per system, improves stability and unlocks growth past size 6.",graphics/icons/markets/cryosanctum.png,111
-Organ Harvesting Operations,organ_harvesting_operations,TRUE,,data.scripts.campaign.econ.conditions.organ_harvesting_operations,"Cryosleeper has been hidden in a secret location, and the grandest organ harvesting operation has begun. Nobody can link a massive upsurge of organ supply to us, but multiple powers have stated their concern.",graphics/icons/markets/cryoharvester.png,112
+Tri Tachyon Influence,tt_smaller_investment,false,true,data.colonyevents.conditions.TriTachyonInvestmentApplier,"Local authorities have signed agreement with Tri Tachyon officials to support inital economical growth of economy, in exchange of montly income.",graphics/icons/markets/urbanized_polity.png,1000
+AoTD Event Break,fired_event,false,true,data.colonyevents.conditions.BreakFromEventsCondition,,graphics/icons/markets/urbanized_polity.png,1000
+Safety conditions : Good,safety_achieved,false,true,data.colonyevents.conditions.SafetyConditionsApplier,,graphics/icons/markets/urbanized_polity.png,1000
+Safety conditions : Bad,safety_declined,false,true,data.colonyevents.conditions.SafetyConditionsApplier,,graphics/icons/markets/urbanized_polity.png,1000
+cryosanctum_event_organs,cryosanctum_event_organs,false,true,data.colonyevents.conditions.CryoSanctumEventApplier,,graphics/icons/markets/urbanized_polity.png,1000
+cryosanctum_event_growth,cryosanctum_event_growth,false,true,data.colonyevents.conditions.CryoSanctumEventApplier,,graphics/icons/markets/urbanized_polity.png,1000
+bakery_fleet,aotd_bakery_assistance,false,true,data.colonyevents.conditions.BakeryEventApplier,,graphics/icons/markets/urbanized_polity.png,1000
+aotd_own_bakery,aotd_own_bakery,false,true,data.colonyevents.conditions.BakeryEventApplier,,graphics/icons/markets/urbanized_polity.png,1000
+mikoshi_consequence,mikoshi_consequence,false,false,data.colonyevents.conditions.MikoshiUsageApplier,,graphics/icons/markets/urbanized_polity.png,1000
 ,,,,,,,
 ,,,,,,,
 ,,,,,,,
@@ -29,10 +35,3 @@ Organ Harvesting Operations,organ_harvesting_operations,TRUE,,data.scripts.campa
 ,,,,,,,
 ,,,,,,,
 ,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,-,,

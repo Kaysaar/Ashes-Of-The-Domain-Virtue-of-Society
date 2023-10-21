@@ -1,24 +1,34 @@
 {
-  "Cryo_but_Better":{
-    "MAX_POP_GROWTH": 10,
-    "POP_GROWTH_RATE": 2.0,
-    "ORGAN_HARVESTING_RATE":1,
-    "TOURISM_CENTER_BONUS": 25.0,
-    "Instruction": "If you want to add new industry to that list and want to work properly you need to go to the special_items.csv and make industry blueprint recording to left template there. Then you need to put in drop groups.csv accroding to template",
-    "INDUSTRIES_TO_RESEARCH":[
-      "logisitcbureau",
-      "electronics",
-      "militarygarrison"
+	"graphics":{
+		"aotd_colony_event":{
+			"harvest_of_year":"graphics/aotd_colony_events/harvest_of_year.png",	
+			"comet_sighted":"graphics/aotd_colony_events/comet_sighted.png",
+			"sands_of_time_finding":"graphics/aotd_colony_events/sands_of_time_finding.png",
+			"sands_of_time_vault":"graphics/aotd_colony_events/sands_of_time_vault.png",
+			"sands_of_time_antimatter":"graphics/aotd_colony_events/sands_of_time_antimatter.png",
+			"sands_of_time_hacking":"graphics/aotd_colony_events/sands_of_time_finding.png",
+			"sands_of_time_low_power":"graphics/aotd_colony_events/sands_of_time_safe.png",
+			"sands_of_time_high_power":"graphics/aotd_colony_events/sands_of_time_danger.png",
+			"sands_of_time_outcome":"graphics/aotd_colony_events/sands_of_time_ending.png",
+			"tt_investment":"graphics/aotd_colony_events/tt_investment.png",
+			"awakening":"graphics/aotd_colony_events/awakening.png",
+			"safety_conditions":"graphics/aotd_colony_events/safety_conditions.png",
+			"uaf_bakery_event":"graphics/aotd_colony_events/uaf_event_bakery.png",
+			"reclaimer":"graphics/aotd_colony_events/rebirth_of_collosus.png",
+			"theta_discovery":"graphics/aotd_colony_events/theta_project_discovery.png",
+			"archimedes_question":"graphics/aotd_colony_events/archimedes_question.png"
+		},
+		"portraits":{
+			"theta_core":"graphics/portraits/theta_core.png"
+		},
+	}
+	
 
-    ],
-    "ELECTRONICS_LIST": {
-      "Corvus": "jangala",
-      "Hybrasil": "eochu_bres",
-      "Tyle": "madeira",
-      "Valhalla": "skathi"
-    },
-    "CAPTIAL_PLANETS_START": ["Chicomoztoc","Kazeron","Eochu Bres","Sindria","Gilead"],
-    "CAPTAL_STARSYSTEMS": ["Aztlan","Thule","Hybrasil","Askonia","Canaan"],
-    "CAPITAL_BUILDING": ["kaysaarcapital_space_elevator","kaysaarcapital_people_square","kaysaarcapital_city_of_dreams","kaysaarcapital_archology_district","kaysaarcapital_garden_of_ludd"]
-  }
+
 }
+
+
+
+
+
+

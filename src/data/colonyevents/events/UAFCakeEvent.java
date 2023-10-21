@@ -32,7 +32,6 @@ public class UAFCakeEvent extends AoTDColonyEvent {
 
     @Override
     public void executeDecision(String currentDecision) {
-        super.executeDecision(currentDecision);
         if (currentDecision.equals("bd_op1")) {
             currentlyAffectedMarket.addIndustry("uaf_bakery_fake");
             UAFBakeryKnockOff ind = (UAFBakeryKnockOff) currentlyAffectedMarket.getIndustry("uaf_bakery_fake");
@@ -46,7 +45,7 @@ public class UAFCakeEvent extends AoTDColonyEvent {
             Global.getSector().getMemory().set("$aotdxuaf_bakery", true);
             Global.getSector().getListenerManager().addListener(new UAFMarketConditionEnforcer());
         }
-
+        super.executeDecision(currentDecision);
 
     }
 

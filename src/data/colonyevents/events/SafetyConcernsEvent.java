@@ -28,13 +28,13 @@ public class SafetyConcernsEvent extends AoTDColonyEvent {
 
     @Override
     public void executeDecision(String currentDecision) {
-        super.executeDecision(currentDecision);
         if(currentDecision.equals("qa_op1")){
             currentlyAffectedMarket.addCondition("safety_achieved");
         }
         else{
             currentlyAffectedMarket.addCondition("safety_declined");
         }
+        super.executeDecision(currentDecision);
 
     }
 

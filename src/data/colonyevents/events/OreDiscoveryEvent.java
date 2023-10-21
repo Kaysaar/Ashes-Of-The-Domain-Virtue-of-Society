@@ -1,4 +1,6 @@
 package data.colonyevents.events;
 
-public class OreDiscoveryEvent {
+import data.colonyevents.models.AoTDColonyEvent;
+
+public class OreDiscoveryEvent extends AoTDColonyEvent {
 }

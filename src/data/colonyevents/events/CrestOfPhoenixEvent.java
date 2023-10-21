@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.colonyevents.listeners.AoTDCrestOfPhoenixListener;
 import data.colonyevents.models.AoTDColonyEvent;
 
 import java.awt.*;
@@ -30,8 +31,8 @@ public class CrestOfPhoenixEvent extends AoTDColonyEvent {
             }
             sectorSize += api.getSize();
         }
-        return false;
-        //return super.canOccur(marketAPI) && ((playerSize >= (sectorSize / 2) && (hegemonySize <= 5)) || Global.getSettings().isDevMode());
+
+        return super.canOccur(marketAPI) && ((playerSize >= (sectorSize / 2) && (hegemonySize <= 5)) || Global.getSettings().isDevMode());
 
     }
 
@@ -53,19 +54,20 @@ public class CrestOfPhoenixEvent extends AoTDColonyEvent {
 
         }
         if (optionId.equals("nc_op2")) {
-
+            tooltip.addPara("Receive permanent +5 Stability modifier to all your worlds",Misc.getPositiveHighlightColor(),10f);
+            tooltip.addPara("Its time to built our own legacy across the stars",Color.ORANGE,10f);
         }
 
     }
 
     @Override
     public void executeDecision(String currentDecision) {
-        super.executeDecision(currentDecision);
         if(currentDecision.equals("nc_op1")){
             Global.getSector().getPlayerFaction().setDisplayNameOverride("Domain of Man");
             Global.getSector().getPlayerFaction().setFactionCrestOverride("graphics/factions/crest_domain.png");
             Global.getSector().getPlayerFaction().setFactionLogoOverride("graphics/factions/domain_explorarium.png");
-
         }
+        Global.getSector().getListenerManager().addListener(new AoTDCrestOfPhoenixListener());
+        super.executeDecision(currentDecision);
     }
 }

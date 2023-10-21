@@ -60,10 +60,10 @@ public class PAGSMEnformcentFleetManager extends SourceBasedFleetManager {
         initDefenderProperties(random,fleet,false);
         fleet.setLocation(source.getLocation().x,source.getLocation().y);
         fleet.setFacing(random.nextFloat()*360f);
-        fleet.addAssignment(FleetAssignment.DEFEND_LOCATION,source,1000000f,"Protecting the confectionary secret recipe.");
+        fleet.addAssignment(FleetAssignment.DEFEND_LOCATION,source,1000000f,"Guarding SFC subject");
 
         fleet.setFaction(source.getMarket().getFaction().getId());
-        fleet.setName("Pastry Copyright Protectors");
+        fleet.setName("SFC Enforcers");
         fleet.setNoFactionInName(true);
         long delayTimestamp = Global.getSector().getClock().getTimestamp();
         long launchDelayDays = MathUtils.getRandomNumberInRange(2, 4);

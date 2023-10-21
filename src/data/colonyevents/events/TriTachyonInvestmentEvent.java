@@ -30,8 +30,8 @@ public class TriTachyonInvestmentEvent extends AoTDColonyEvent {
         }
         if(currentDecision.equals("hh_op3")){
             Global.getSector().getFaction(Factions.TRITACHYON).adjustRelationship(Global.getSector().getPlayerFaction().getId(),-0.2f);
-
         }
+        super.executeDecision(currentDecision);
 
     }
 

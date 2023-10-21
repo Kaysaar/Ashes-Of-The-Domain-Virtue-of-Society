@@ -3,11 +3,15 @@ package data.plugins;
 
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.AICoreAdminPlugin;
 import com.fs.starfarer.api.campaign.listeners.ListenerManagerAPI;
+import com.fs.starfarer.api.impl.campaign.intel.events.HostileActivityEventIntel;
 import data.colonyevents.listeners.UAFEventConditionListener;
 import data.colonyevents.manager.AoTDColonyEventAssigner;
 import data.colonyevents.manager.AoTDColonyEventManager;
 import data.colonyevents.listeners.AoTDColonyEventUIListener;
+import data.scripts.ThetaCoreDeceptiveMeasuresFactor;
+import data.scripts.ThetaCoreDeceptiveMeasuresFactorInserter;
 import org.apache.log4j.Logger;
 
 //import data.colonyevents.ui.ExampleIDP;
@@ -51,7 +55,13 @@ public class AoTDVoSModPlugin extends BaseModPlugin {
             Global.getSector().addScript(new AoTDColonyEventAssigner());
             Global.getSector().removeTransientScriptsOfClass(AoTDColonyEventAssigner.class);
         }
-       setListenersIfNeeded();
+        setListenersIfNeeded();
+        Global.getSector().registerPlugin(new ThetaCoreCampaignImpl());
+        if(!Global.getSector().getMemory().contains("$aotd_inserted_theta")){
+            if(!Global.getSector().hasScript(ThetaCoreDeceptiveMeasuresFactorInserter.class)){
+                Global.getSector().addScript(new ThetaCoreDeceptiveMeasuresFactorInserter());
+            }
+        }
 
 
     }

@@ -48,7 +48,7 @@ public class AoTDColonyEventManager {
 
     @NotNull
     public static AoTDColonyEventManager getInstance() {
-        if(Global.getSector().getPersistentData().get(ManagerMemo)==null){
+        if (Global.getSector().getPersistentData().get(ManagerMemo) == null) {
             setInstance();
         }
         return (AoTDColonyEventManager) Global.getSector().getPersistentData().get(ManagerMemo);
@@ -118,6 +118,8 @@ public class AoTDColonyEventManager {
     }
 
     public void onGameLoad(boolean isGameSaveloaded) {
+        this.eventsSpec.clear();
+        this.eventsSpec.putAll(getSpecsFromFiles());
         reloadEvents();
         for (AoTDColonyEvent colonyEvent : events) {
             logger.info(colonyEvent.getSpec().getEventId() + "Spec and loaded class " + colonyEvent.getClass().getName());
@@ -212,7 +214,7 @@ public class AoTDColonyEventManager {
                         Global.getSector().getCampaignUI().addMessage(intel, CommMessageAPI.MessageClickAction.NOTHING);
                     }
                 }
-                lastEvent=0;
+                lastEvent = 0;
 
             }
         }
@@ -223,9 +225,18 @@ public class AoTDColonyEventManager {
     public void updateEvent(AoTDColonyEvent eventUpdated) {
         for (AoTDColonyEvent event : events) {
             if (event.getSpec().getEventId().equals(onGoingEvent.getSpec().getEventId())) {
-                event = eventUpdated;
+                events.remove(event);
+                events.add(eventUpdated);
+                break;
             }
         }
+//        for (AoTDColonyEvent event : events) {
+//            if (event.getSpec().getEventId().equals(onGoingEvent.getSpec().getEventId())) {
+//                event = eventUpdated;
+//
+//                break;
+//            }
+//        }
     }
 
     public int getRandomNumber(int min, int max) {
@@ -242,9 +253,6 @@ public class AoTDColonyEventManager {
         if (guaranteedNextEventId != null) {
             for (AoTDColonyEvent event : eventsList) {
                 if (!event.getSpec().getEventId().equals(guaranteedNextEventId)) continue;
-                if (!validateEvent(marketAPI, event))
-                    continue;
-
                 event.isWaitingForDecision = true;
                 event.currentlyAffectedMarket = marketAPI;
                 logger.info("Event Picked");
@@ -288,7 +296,7 @@ public class AoTDColonyEventManager {
     private static boolean validateEvent(MarketAPI marketAPI, AoTDColonyEvent event) {
         boolean canFire = !event.isOnGoing && event.cooldownBeforeEventCanOccur <= 0 && !event.isWaitingForDecision && event.canOccur(marketAPI);
         if (event.getSpec().isOneTimeEvent() && canFire) {
-            boolean unique = !event.haveFiredAtLeastOnce ;
+            boolean unique = !event.haveFiredAtLeastOnce;
             return unique;
         }
         return canFire;
@@ -299,24 +307,24 @@ public class AoTDColonyEventManager {
     public MarketAPI pickMarket() {
         List<MarketAPI> markets = Misc.getPlayerMarkets(true);
         Collections.shuffle(markets);
-        if(markets.isEmpty())return null;
+        if (markets.isEmpty()) return null;
         return markets.get(0);
     }
 
     public void reloadEvents() {
         Map<String, AoTDColonyEvent> eventsGeneratedFromSpecs = generateEventsFromSpec(eventsSpec);
-            List<AoTDColonyEvent> updatedEvents = new ArrayList<>();
-            List<AoTDColonyEvent> eventsBeforeUpdate = new ArrayList<>(events);
-         events.clear();
+        List<AoTDColonyEvent> updatedEvents = new ArrayList<>();
+        List<AoTDColonyEvent> eventsBeforeUpdate = new ArrayList<>(events);
+        events.clear();
         for (AoTDColonyEvent colonyEvent : eventsGeneratedFromSpecs.values()) {
             boolean wasAlreadyInRepo = false;
             logger.info(colonyEvent.getClass().getName() + "Event VOS");
             AoTDColonyEvent event = null;
             for (AoTDColonyEvent eventToChoose : eventsBeforeUpdate) {
                 if (eventToChoose.getSpec().getEventId().equals(colonyEvent.getSpec().getEventId())) {
-                    colonyEvent.haveFiredAtLeastOnce=eventToChoose.haveFiredAtLeastOnce;
-                    colonyEvent.prevDecisionId=eventToChoose.prevDecisionId;
-                    colonyEvent.isOnGoing=eventToChoose.isOnGoing;
+                    colonyEvent.haveFiredAtLeastOnce = eventToChoose.haveFiredAtLeastOnce;
+                    colonyEvent.prevDecisionId = eventToChoose.prevDecisionId;
+                    colonyEvent.isOnGoing = eventToChoose.isOnGoing;
                 }
             }
             updatedEvents.add(colonyEvent);
@@ -339,6 +347,7 @@ public class AoTDColonyEventManager {
                 }
                 AoTDColonyEvent colonyEvent = (AoTDColonyEvent) eventPlugin.newInstance();
                 colonyEvent.setSpec(value);
+                colonyEvent.setLoadedOptions();
                 newEventsById.put(value.getEventId(), colonyEvent);
                 logger.info("Loaded VOS Event " + colonyEvent.getSpec().getEventId() + " from " + value.getModId() + " with script " + value.getPlugin() + ".");
             } catch (Exception e) {

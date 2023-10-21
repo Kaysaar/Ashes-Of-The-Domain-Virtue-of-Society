@@ -44,10 +44,6 @@ public class EternalSlumberEvent extends AoTDColonyEvent {
 
     @Override
     public void executeDecision(String currentDecision) {
-        super.executeDecision(currentDecision);
-        if(currentDecision.equals("es_op1")){
-
-        }
         if(currentDecision.equals("es_op2")){
             currentlyAffectedMarket.addCondition("cryosanctum_event_organs");
             currentlyAffectedMarket.addIndustry(Industries.CRYOSANCTUM);
@@ -65,6 +61,7 @@ public class EternalSlumberEvent extends AoTDColonyEvent {
             intel.setSound(BaseIntelPlugin.getSoundMajorPosting());
             Global.getSector().getCampaignUI().addMessage(intel, CommMessageAPI.MessageClickAction.COLONY_INFO, this.currentlyAffectedMarket);
         }
+        super.executeDecision(currentDecision);
     }
 
 }

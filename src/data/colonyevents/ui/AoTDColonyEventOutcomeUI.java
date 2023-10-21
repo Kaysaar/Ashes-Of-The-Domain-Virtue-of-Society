@@ -204,8 +204,8 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
         TooltipMakerAPI anch = anchorForImage.createUIElement(500,275,false);
         anch.addImage(Global.getSettings().getSpriteName("aotd_colony_event",eventToSolve.getSpec().getImage()),10f);
         anchorForImage.addUIElement(anch).inTL(-10,-10);
-
-        for (Map.Entry<String, String> optionEntry : eventToSolve.getSpec().getOptions().entrySet()) {
+        eventToSolve.overrideOptions();
+        for (Map.Entry<String, String> optionEntry : eventToSolve.getLoadedOptions().entrySet()) {
             CustomPanelAPI optionButtonPanel = panel.createCustomPanel(ENTRY_WIDTH, ENTRY_HEIGHT, new ButtonReportingCustomPanel(this));
             TooltipMakerAPI anchor = optionButtonPanel.createUIElement(ENTRY_WIDTH, ENTRY_HEIGHT, false);
             ButtonAPI areaCheckbox = anchor.addAreaCheckbox("", optionEntry.getKey(), baseColor, bgColour, brightColor, //new Color(255,255,255,0)
@@ -274,6 +274,7 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
             }
             callbacks.dismissDialog();
             dialog.dismiss();
+            return;
         }
         reset();
 

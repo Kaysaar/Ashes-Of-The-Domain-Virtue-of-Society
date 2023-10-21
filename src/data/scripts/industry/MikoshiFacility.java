@@ -65,7 +65,7 @@ public class MikoshiFacility extends BaseIndustry {
                 }
 
             }
-            tooltip.addPara("Warning! We should not overuse Soulkiller! This will lead to get unwanted attention from our popluation, therefore decreasing stability by a lot! Recommend waiting around 180 days, for every usage of Soulkiller.",Misc.getNegativeHighlightColor(),10f);
+            tooltip.addPara("Warning! We should not overuse Soulkiller! This will lead to get unwanted attention from our population, therefore decreasing stability by a lot! Recommend waiting around 180 days, for every usage of Soulkiller.",Misc.getNegativeHighlightColor(),10f);
         }
     }
 

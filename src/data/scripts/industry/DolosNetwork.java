@@ -1,7 +1,9 @@
 package data.scripts.industry;
 
+import com.fs.starfarer.api.characters.AdminData;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
+import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 
 import java.awt.*;

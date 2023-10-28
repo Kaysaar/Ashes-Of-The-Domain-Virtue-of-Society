@@ -46,10 +46,10 @@ public class UAFBakeryKnockOff extends BaseIndustry {
         if (deficit.two > maxDeficit) deficit.two = maxDeficit;
         if(isFromContract){
             if(deficit.two!=0){
-                this.getIncome().modifyFlat("aurelio",100000/deficit.two,"Aurelio Flambé Baking");
+                this.getIncome().modifyFlat("aurelio",50000/deficit.two,"Aurelio Flambé Baking");
             }
             else{
-                this.getIncome().modifyFlat("aurelio",100000,"Aurelio Flambé Baking");
+                this.getIncome().modifyFlat("aurelio",50000,"Aurelio Flambé Baking");
             }
         }
         else{

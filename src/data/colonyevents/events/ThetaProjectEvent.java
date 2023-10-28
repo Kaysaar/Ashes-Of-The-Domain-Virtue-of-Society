@@ -152,12 +152,10 @@ public class ThetaProjectEvent extends AoTDColonyEvent {
         switch (optionId) {
             case "bs_op1":
                 tooltip.addPara("Lose 100.000 Credits", NEGATIVE, 10f);
-                tooltip.addPara("Lose 100 crew", NEGATIVE, 10f);
                 tooltip.addPara("Our team will be equipped only with necessary tools for this expedition.", INFORMATIVE, 10f);
                 break;
             case "bs_op2":
                 tooltip.addPara("Lose 500.000 Credits", NEGATIVE, 10f);
-                tooltip.addPara("Lose 1000 crew", NEGATIVE, 10f);
                 tooltip.addPara("Our expedition will be equipped with state-of-the-art tools for exploration of this facility.", INFORMATIVE, 10f);
                 break;
             case "bs_op3":
@@ -190,11 +188,13 @@ public class ThetaProjectEvent extends AoTDColonyEvent {
             case "bs_op1":
                 AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 14;
                 AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
+                Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(100000);
                 AoTDColonyEventManager.getInstance().guaranteedNextEventId = "theta_expl_fac";
                 break;
             case "bs_op2":
                 AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 21;
                 AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
+                Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(500000);
                 AoTDColonyEventManager.getInstance().guaranteedNextEventId = "theta_expl_fac";
                 break;
             case "bs_fac_op":

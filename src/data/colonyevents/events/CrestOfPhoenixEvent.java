@@ -32,7 +32,7 @@ public class CrestOfPhoenixEvent extends AoTDColonyEvent {
             sectorSize += api.getSize();
         }
 
-        return super.canOccur(marketAPI) && ((playerSize >= (sectorSize / 2) && (hegemonySize <= 5)) || Global.getSettings().isDevMode());
+        return super.canOccur(marketAPI) && ((playerSize >= (sectorSize / 2) && (hegemonySize <= 5)));
 
     }
 

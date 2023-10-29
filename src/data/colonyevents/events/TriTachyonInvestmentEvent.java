@@ -19,7 +19,7 @@ public class TriTachyonInvestmentEvent extends AoTDColonyEvent {
                 isThereTriTachyon = true;
             }
         }
-        return occur&& marketAPI.isFreePort()&&!marketAPI.hasIndustry("tt_hq")&&isThereTriTachyon;
+        return occur&& marketAPI.isFreePort()&&!marketAPI.hasIndustry("tt_hq")&&isThereTriTachyon&& !currentlyAffectedMarket.getMemory().is("$aotd_declined_TT_offer",true);
     }
 
     @Override
@@ -36,6 +36,7 @@ public class TriTachyonInvestmentEvent extends AoTDColonyEvent {
         }
         if(currentDecision.equals("hh_op3")){
             Global.getSector().getFaction(Factions.TRITACHYON).adjustRelationship(Global.getSector().getPlayerFaction().getId(),-0.2f);
+            currentlyAffectedMarket.getMemory().set("$aotd_declined_TT_offer",true);
         }
         super.executeDecision(currentDecision);
 

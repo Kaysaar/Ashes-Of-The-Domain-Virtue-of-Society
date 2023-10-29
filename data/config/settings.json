@@ -16,7 +16,10 @@
 			"uaf_bakery_event":"graphics/aotd_colony_events/uaf_event_bakery.png",
 			"reclaimer":"graphics/aotd_colony_events/rebirth_of_collosus.png",
 			"theta_discovery":"graphics/aotd_colony_events/theta_project_discovery.png",
-			"archimedes_question":"graphics/aotd_colony_events/archimedes_question.png"
+			"archimedes_question":"graphics/aotd_colony_events/archimedes_question.png",
+			"tectonic_disaster":"graphics/aotd_colony_events/tectonic_disaster.png",
+			"food_experiment":"graphics/aotd_colony_events/food_experiment.png",
+			"hivemind_whoopsie":"graphics/aotd_colony_events/hivemind_whoopsie.png",
 		},
 		"portraits":{
 			"theta_core":"graphics/portraits/theta_core.png"

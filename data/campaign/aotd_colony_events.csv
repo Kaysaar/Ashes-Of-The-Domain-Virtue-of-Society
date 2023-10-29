@@ -28,7 +28,7 @@ accidental_finding_vault_antimatter,Sands of Time - Structure Integrity Damaged,
 accidental_finding_vault_antimatter_outcome,Sands of Time - Irreversible Damage,accidental_finding_antimatter_outcome_op1:.....,true,false,data.colonyevents.events.SandsOfTimeEvent,720,aod_vos,sands_of_time_antimatter,5000,,,,,
 tri_tachyon_investment,Tri Tachyon's Helpful Hand,"hh_op1:Welcome the Board Member to our colony! This is an opportunity too good to pass up
 hh_op2:Politely Welcome them, but restrict their ability to invest in our industry to protect it from Tri-Tachyon influence
-hh_op3:Decline the deal using some official statement of wanting to stay neutral in Tri-Tachyon affairs.",false,false,data.colonyevents.events.TriTachyonInvestmentEvent,720,aod_vos,tt_investment,5000,,,,,
+hh_op3:Decline the deal using some official statement of wanting to stay neutral in Tri-Tachyon affairs.",false,false,data.colonyevents.events.TriTachyonInvestmentEvent,1200,aod_vos,tt_investment,5000,,,,,
 eternal_slumber,Eternal Slumber,"es_op1:Seal entrance to this crypt.
 es_op2:Use this crypt to harvest organs.
 es_op3:Awaken all people, that have been put into cryosleep.",true,false,data.colonyevents.events.EternalSlumberEvent,720,aod_vos,awakening,5000,,,,,
@@ -48,3 +48,10 @@ bs_fac_op2: Explore Director's Office
 bs_fac_op3: Explore Storage Area ",true,false,data.colonyevents.events.ThetaProjectEvent,10000,aod_core,theta_discovery,7000,,,,,
 archimedes_usage,Question of Archimedes,"arch_op1:We should dismantle this supercomputer.It served it's purpouse.
 arch_op2:We will use it to help conducting our research.",true,false,data.colonyevents.events.ArchimedesUsageEvent,10000,aod_core,archimedes_question,7000,,,,,
+food_experiment,Abbandoned Hydroponic Facility,"fe_op1:A plant that create big potatoes.
+fe_op2:A plant create flowers that grows fast and produce red, purple and white petals.
+fe_op3:A plant which is a type of tree, it can be use in terraforming the dessert. ",true,true,data.colonyevents.events.FoodExperimentEvent,10000,aod_vos,food_experiment,7000,,,,,
+hivemind_discovery,Underground Hivemind,"hive_op1:Try to find a way to use them as defences.
+hive_op2:Start a breeding program to export the eggs.
+hive_op3:I will not let those things infest our planet, destroy them.",true,true,data.colonyevents.events.UndergroundHiveEvent,10000,aod_vos,hivemind_whoopsie,7000	,,,,,
+tectonic_disaster,Tectonic Catastrophy,tec_op1: Fuck....,true,true,data.colonyevents.events.TectonicDisasterEvent,10000,aod_vos,tectonic_disaster,7000	,,,,,

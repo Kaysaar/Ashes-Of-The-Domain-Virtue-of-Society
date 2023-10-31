@@ -11,6 +11,7 @@ import com.fs.starfarer.api.impl.campaign.intel.ProjectCheronIntel;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.colonyevents.manager.AoTDColonyEventManager;
 import data.colonyevents.models.AoTDColonyEvent;
+import data.colonyevents.models.AoTDGuarantedEvent;
 
 import java.awt.*;
 import java.util.Collections;
@@ -30,7 +31,7 @@ public class ThetaProjectEvent extends AoTDColonyEvent {
     @Override
     public boolean canOccur(MarketAPI marketAPI) {
         if (this.spec.getEventId().equals("theta_finding_facility")) {
-            return marketAPI.hasCondition("pre_collapse_facility") && marketAPI.getSize() >= 4 && marketAPI.hasIndustry("researchfacility") && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= 100000 && Global.getSector().getPlayerFleet().getCargo().getTotalCrew() > 1000;
+            return marketAPI.hasCondition("pre_collapse_facility") && marketAPI.getSize() >= 4 && marketAPI.hasIndustry("researchfacility") && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= 500000;
         }
         return false;
     }
@@ -186,46 +187,32 @@ public class ThetaProjectEvent extends AoTDColonyEvent {
     public void executeDecision(String currentDecision) {
         switch (currentDecision) {
             case "bs_op1":
-                AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 14;
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
+                AoTDColonyEventManager.getInstance().addGuaranteedEvent("theta_expl_fac", currentlyAffectedMarket.getId(), 14);
                 Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(100000);
-                AoTDColonyEventManager.getInstance().guaranteedNextEventId = "theta_expl_fac";
                 break;
             case "bs_op2":
-                AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 21;
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
+                AoTDColonyEventManager.getInstance().addGuaranteedEvent("theta_expl_fac", currentlyAffectedMarket.getId(), 21);
                 Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(500000);
-                AoTDColonyEventManager.getInstance().guaranteedNextEventId = "theta_expl_fac";
                 break;
             case "bs_fac_op":
-                AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 10;
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
-                AoTDColonyEventManager.getInstance().guaranteedNextEventId = "theta_expl_fac_continue";
+                AoTDColonyEventManager.getInstance().addGuaranteedEvent("theta_expl_fac_continue", currentlyAffectedMarket.getId(), 10);
                 break;
             case "bs_fac_op1":
-                AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 12;
                 visitedMainServerRoom = true;
                 previiousExpedition = "bs_fac_op1";
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
-                exploreFurther();
+                exploreFurther(12);
                 break;
             case "bs_fac_op2":
-                AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 4;
                 visitedDirectorRoom = true;
                 previiousExpedition = "bs_fac_op2";
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
-                exploreFurther();
+                exploreFurther(4);
                 break;
             case "bs_fac_op3":
                 visitedMagazine = true;
-                AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 15;
                 previiousExpedition = "bs_fac_op3";
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
-                exploreFurther();
+                exploreFurther(15);
                 break;
             case "bs_fac_op_finish":
-                AoTDColonyEventManager.getInstance().guaranteedNextEventId = null;
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = null;
                 AoTDColonyEventManager.getInstance().lastEvent = -20;
                 break;
 
@@ -234,7 +221,7 @@ public class ThetaProjectEvent extends AoTDColonyEvent {
         super.executeDecision(currentDecision);
     }
 
-    void exploreFurther() {
+    void exploreFurther(float amountOfDays) {
         AoTDColonyEvent event = AoTDColonyEventManager.getInstance().getEventById("theta_finding_facility");
         int initalAmountOfChances = 2;
 
@@ -245,7 +232,7 @@ public class ThetaProjectEvent extends AoTDColonyEvent {
         if (visitedMagazine) initalAmountOfChances--;
         if (visitedDirectorRoom) initalAmountOfChances--;
         if (visitedMainServerRoom) initalAmountOfChances--;
-        AoTDColonyEventManager.getInstance().guaranteedNextEventId = "theta_expl_fac_continue";
+        AoTDColonyEventManager.getInstance().addGuaranteedEvent("theta_expl_fac_continue",currentlyAffectedMarket.getId(),amountOfDays);
         if (initalAmountOfChances <= 0) {
             this.finishedExplorationSection = true;
         }

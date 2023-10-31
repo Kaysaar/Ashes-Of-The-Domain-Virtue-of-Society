@@ -48,35 +48,8 @@ public class SandsOfTimeEvent extends AoTDColonyEvent {
 
             return marketAPI.hasCondition(Conditions.RUINS_VAST) && hasTag;
         }
-        if (eventId.equals("accidental_finding_vault")) {
-            String id = AoTDColonyEventManager.getInstance().guaranteedNextEventId;
-            return id != null && id.equals(this.getSpec().getEventId());
-        }
-        if (eventId.equals("accidental_finding_vault_hacking")) {
-            String id = AoTDColonyEventManager.getInstance().guaranteedNextEventId;
-            return id != null && id.equals(this.getSpec().getEventId());
-        }
-        if (eventId.equals("accidental_finding_vault_trigger_defences")) {
-            String id = AoTDColonyEventManager.getInstance().guaranteedNextEventId;
-            return id != null && id.equals(this.getSpec().getEventId());
-        }
-        if (eventId.equals("accidental_finding_vault_outcome")) {
-            String id = AoTDColonyEventManager.getInstance().guaranteedNextEventId;
-            return id != null && id.equals(this.getSpec().getEventId());
-        }
-        if (eventId.equals("accidental_finding_vault_conclusion")) {
-            String id = AoTDColonyEventManager.getInstance().guaranteedNextEventId;
-            return id != null && id.equals(this.getSpec().getEventId());
-        }
-        if (eventId.equals("accidental_finding_vault_antimatter")) {
-            String id = AoTDColonyEventManager.getInstance().guaranteedNextEventId;
-            return id != null && id.equals(this.getSpec().getEventId());
-        }
-        if (eventId.equals("accidental_finding_vault_antimatter_outcome")) {
-            String id = AoTDColonyEventManager.getInstance().guaranteedNextEventId;
-            return id != null && id.equals(this.getSpec().getEventId());
-        }
-        return super.canOccur(marketAPI);
+
+        return false;
     }
 
     @Override
@@ -138,13 +111,9 @@ public class SandsOfTimeEvent extends AoTDColonyEvent {
         if (eventId.equals("accidental_finding")) {
             prevDecisionId = currentDecision;
             if (currentDecision.equals("accidental_finding_op1")) {
-                AoTDColonyEventManager.getInstance().guaranteedNextEventId = "accidental_finding_vault";
-                AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 7;
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
+                AoTDColonyEventManager.getInstance().addGuaranteedEvent("accidental_finding_vault",currentlyAffectedMarket.getId(),7);
             }
             else{
-                AoTDColonyEventManager.getInstance().guaranteedNextEventId = null;
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = null;
                 AoTDColonyEventManager.getInstance().lastEvent = 0;
                 super.executeDecision(currentDecision);
             }
@@ -152,26 +121,18 @@ public class SandsOfTimeEvent extends AoTDColonyEvent {
         if (eventId.equals("accidental_finding_vault")) {
             prevDecisionId = currentDecision;
             if (currentDecision.equals("vault_op1")) {
-                AoTDColonyEventManager.getInstance().guaranteedNextEventId = "accidental_finding_vault_hacking";
-                AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 4;
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
+                AoTDColonyEventManager.getInstance().addGuaranteedEvent("accidental_finding_vault_hacking",currentlyAffectedMarket.getId(),4);
             } else if (currentDecision.equals("vault_op2")) {
-                AoTDColonyEventManager.getInstance().guaranteedNextEventId = "accidental_finding_vault_antimatter";
-                AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent=12;
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
+                AoTDColonyEventManager.getInstance().addGuaranteedEvent("accidental_finding_vault_antimatter",currentlyAffectedMarket.getId(),12);
             }
         }
         if (eventId.equals("accidental_finding_vault_hacking")) {
             prevDecisionId = currentDecision;
             AoTDColonyEventManager.getInstance().previousGuaranteedEventId = this.getSpec().getEventId();
             if (currentDecision.equals("accidental_finding_hacking_op1")) {
-                AoTDColonyEventManager.getInstance().guaranteedNextEventId = "accidental_finding_vault_outcome";
-                AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 8;
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
+                AoTDColonyEventManager.getInstance().addGuaranteedEvent("accidental_finding_vault_outcome",currentlyAffectedMarket.getId(),8);
             } else {
-                AoTDColonyEventManager.getInstance().guaranteedNextEventId = "accidental_finding_vault_trigger_defences";
-                AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 10;
-                AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
+                AoTDColonyEventManager.getInstance().addGuaranteedEvent("accidental_finding_vault_trigger_defences",currentlyAffectedMarket.getId(),10);
             }
         }
         if(eventId.equals("accidental_finding_vault_trigger_defences")){
@@ -182,9 +143,7 @@ public class SandsOfTimeEvent extends AoTDColonyEvent {
                 }
             }
             Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(300000);
-            AoTDColonyEventManager.getInstance().guaranteedNextEventId = "accidental_finding_vault_outcome";
-            AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 14;
-            AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
+            AoTDColonyEventManager.getInstance().addGuaranteedEvent("accidental_finding_vault_outcome",currentlyAffectedMarket.getId(),14);
 
         }
         if(eventId.equals("accidental_finding_vault_outcome")){
@@ -205,15 +164,11 @@ public class SandsOfTimeEvent extends AoTDColonyEvent {
                 }
 
             }
-            AoTDColonyEventManager.getInstance().guaranteedNextEventId = null;
-            AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = null;
             AoTDColonyEventManager.getInstance().lastEvent = -40;
         }
         if(eventId.equals("accidental_finding_vault_antimatter")){
             prevDecisionId = currentDecision;
-            AoTDColonyEventManager.getInstance().guaranteedNextEventId = "accidental_finding_vault_antimatter_outcome";
-            AoTDColonyEventManager.getInstance().breakFromAnotherStageOfEvent = 14;
-            AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = currentlyAffectedMarket;
+            AoTDColonyEventManager.getInstance().addGuaranteedEvent("accidental_finding_vault_antimatter_outcome",currentlyAffectedMarket.getId(),14);
         }
         if(eventId.equals("accidental_finding_vault_antimatter_outcome")){
             prevDecisionId = currentDecision;
@@ -231,8 +186,6 @@ public class SandsOfTimeEvent extends AoTDColonyEvent {
                 }
             }
             currentlyAffectedMarket.reapplyConditions();
-            AoTDColonyEventManager.getInstance().guaranteedNextEventId = null;
-            AoTDColonyEventManager.getInstance().guaranteedNextEventMarket = null;
             AoTDColonyEventManager.getInstance().lastEvent = 0;
             super.executeDecision(currentDecision);
         }

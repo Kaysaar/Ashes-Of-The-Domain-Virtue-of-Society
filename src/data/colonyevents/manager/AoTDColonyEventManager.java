@@ -3,11 +3,13 @@ package data.colonyevents.manager;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.comm.CommMessageAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.intel.BaseIntelPlugin;
 import com.fs.starfarer.api.impl.campaign.intel.MessageIntel;
 import com.fs.starfarer.api.util.Misc;
 import data.colonyevents.models.AoTDColonyEvent;
 import data.colonyevents.models.AoTDColonyEventSpec;
+import data.colonyevents.models.AoTDGuarantedEvent;
 import data.colonyevents.ui.AoTDColonyEventOutomeDP;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +35,6 @@ public class AoTDColonyEventManager {
     public static final float maxTimeToMakeDecision = 7;
     public static final String lastEventMemKey = "$lastEvent";
     public float lastEvent = 0;
-    public float breakFromAnotherStageOfEvent = 0;
     @NotNull
     private Map<String, AoTDColonyEventSpec> eventsSpec = new HashMap<>();
     @NotNull
@@ -41,9 +42,8 @@ public class AoTDColonyEventManager {
     public AoTDColonyEvent onGoingEvent = null;
     public MarketAPI currentMarketWithEvent = null;
 
-    public String guaranteedNextEventId = null;
+    public List<AoTDGuarantedEvent> guarantedEvents = new ArrayList<>();
     public String previousGuaranteedEventId = null;
-    public MarketAPI guaranteedNextEventMarket = null;
 
 
     @NotNull
@@ -160,8 +160,13 @@ public class AoTDColonyEventManager {
         float days = Global.getSector().getClock().convertToDays(ammount);
 
         lastEvent += days;
-        if (breakFromAnotherStageOfEvent > 0 && guaranteedNextEventId != null) {
-            breakFromAnotherStageOfEvent -= days;
+        if(guarantedEvents==null){
+            guarantedEvents = new ArrayList<>();
+        }
+        for (AoTDGuarantedEvent guarantedEvent:guarantedEvents){
+            if (guarantedEvent.timeToFireEvent > 0) {
+                guarantedEvent.timeToFireEvent -= days;
+            }
         }
         for (AoTDColonyEvent event : events) {
             if (event.isOnGoing || event.isWaitingForDecision) continue;
@@ -178,9 +183,11 @@ public class AoTDColonyEventManager {
             }
 
         }
-        if (breakFromAnotherStageOfEvent <= 0 && guaranteedNextEventId != null && onGoingEvent == null) {
+
+        if (checkForValidGuaranteedEvent() && onGoingEvent == null) {
             logger.info("Passed first interval of guaranteed event");
-            AoTDColonyEvent event = pickEvent(guaranteedNextEventMarket);
+            AoTDGuarantedEvent guarantedEvent = popFirstGuaranteedEvent();
+            AoTDColonyEvent event = pickGuaranteedEvent(guarantedEvent);
             if (event != null) {
                 onGoingEvent = event;
                 onGoingEvent.daysToMakeDecision = 7;
@@ -191,7 +198,7 @@ public class AoTDColonyEventManager {
             }
         }
 
-        if (lastEvent >= intervalMin && onGoingEvent == null && guaranteedNextEventId == null) {
+        if (lastEvent >= intervalMin && onGoingEvent == null ) {
             logger.info("Passed first interval");
             int numb = getRandomNumber(0, intervalMax - intervalMin);
             if ((numb >= (intervalMax - intervalMin) / 2) || lastEvent >= intervalMax) {
@@ -250,27 +257,6 @@ public class AoTDColonyEventManager {
         Random random = Misc.getRandom(getRandomNumber(1, 50000), 100);
         Collections.shuffle(eventsList, random);
         AoTDColonyEvent eventChoosen = null;
-        if (guaranteedNextEventId != null) {
-            for (AoTDColonyEvent event : eventsList) {
-                if (!event.getSpec().getEventId().equals(guaranteedNextEventId)) continue;
-                event.isWaitingForDecision = true;
-                event.currentlyAffectedMarket = marketAPI;
-                logger.info("Event Picked");
-                eventChoosen = event;
-                guaranteedNextEventId = null;
-                event.haveFiredAtLeastOnce = true;
-                break;
-            }
-            if (eventChoosen != null) {
-                for (AoTDColonyEvent event : events) {
-                    if (event.getSpec().getEventId().equals(eventChoosen.getSpec().getEventId())) {
-                        event = eventChoosen;
-                        return event;
-                    }
-                }
-            }
-
-        }
         for (AoTDColonyEvent event : eventsList) {
             if (!validateEvent(marketAPI, event))
                 continue;
@@ -356,5 +342,68 @@ public class AoTDColonyEventManager {
         }
         return newEventsById;
     }
+    public AoTDGuarantedEvent popFirstGuaranteedEvent(){
+        int index = 0;
+        for (AoTDGuarantedEvent guarantedEvent : guarantedEvents) {
+            if(guarantedEvent.timeToFireEvent<=0){
+                return guarantedEvents.remove(index);
+            }
+            index++;
+        }
+        return null;
+    }
+    public boolean checkForValidGuaranteedEvent(){
+        for (AoTDGuarantedEvent guarantedEvent : guarantedEvents) {
+            if(guarantedEvent.timeToFireEvent<=0){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void addGuaranteedEvent(String id , String marketId, float timeToFire){
+        guarantedEvents.add(new AoTDGuarantedEvent(id,marketId,timeToFire));
+    }
+    public AoTDColonyEvent pickGuaranteedEvent(AoTDGuarantedEvent guarantedEvent) {
+        logger.info("Start Guaranteed Event");
+        List<AoTDColonyEvent> eventsList = new ArrayList<>(events);
+        Random random = Misc.getRandom(getRandomNumber(1, 50000), 100);
+        Collections.shuffle(eventsList, random);
+        AoTDColonyEvent eventChoosen = null;
+        for (AoTDColonyEvent event : eventsList) {
+            if(!event.getSpec().getEventId().equals(guarantedEvent.eventId))continue;
+            event.isWaitingForDecision = true;
+            event.currentlyAffectedMarket = findMarketOfFaction(Factions.PLAYER,guarantedEvent.idOfMarket);
+            event.haveFiredAtLeastOnce = true;
+            logger.info("Event Picked");
+            eventChoosen = event;
+            break;
+        }
+        if (eventChoosen != null) {
+            for (AoTDColonyEvent event : events) {
+                if (event.getSpec().getEventId().equals(eventChoosen.getSpec().getEventId())) {
+                    event = eventChoosen;
+                    return event;
+                }
+            }
+        }
 
+        return eventChoosen;
+    }
+    public MarketAPI findMarketOfFaction(String factionId, String marketId){
+        if(factionId.equals(Factions.PLAYER)){
+            for (MarketAPI s :Misc.getPlayerMarkets(true)) {
+                if(s.getId().equals(marketId)){
+                    return s;
+                }
+            }
+        }
+        else{
+            for (MarketAPI marketAPI : Global.getSector().getEconomy().getMarketsCopy()) {
+                if(marketAPI.getId().equals(marketId)&&marketAPI.getFactionId().equals(factionId)){
+                    return marketAPI;
+                }
+            }
+        }
+        return null;
+    }
 }

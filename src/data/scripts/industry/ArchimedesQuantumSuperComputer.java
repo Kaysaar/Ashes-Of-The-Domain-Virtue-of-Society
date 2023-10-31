@@ -64,7 +64,7 @@ public class ArchimedesQuantumSuperComputer extends BaseIndustry {
     @Override
     public void advance(float amount) {
         super.advance(amount);
-        if(metDemand){
+        if(metDemand&&isFunctional()){
             decryptionProgress+= Global.getSector().getClock().convertToDays(amount);
         }
     }

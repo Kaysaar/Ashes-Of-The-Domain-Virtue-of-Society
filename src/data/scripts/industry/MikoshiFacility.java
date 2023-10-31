@@ -9,6 +9,8 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MikoshiFacility extends BaseIndustry {
     //Yes this is reference to Cyberpunk 2077
@@ -74,4 +76,15 @@ public class MikoshiFacility extends BaseIndustry {
         return false;
     }
 
+    @Override
+    public boolean isAvailableToBuild() {
+        Map<String,Boolean> researchSaved = (HashMap<String, Boolean>) Global.getSector().getPersistentData().get("researchsaved");
+        return researchSaved != null ? researchSaved.get(id) : false;
+    }
+
+    @Override
+    public boolean showWhenUnavailable() {
+        Map<String,Boolean> researchSaved = (HashMap<String, Boolean>) Global.getSector().getPersistentData().get("researchsaved");
+        return researchSaved != null ? researchSaved.get(id) : false;
+    }
 }

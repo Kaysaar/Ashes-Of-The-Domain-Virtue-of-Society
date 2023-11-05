@@ -294,7 +294,14 @@ public class AoTDColonyEventManager {
         List<MarketAPI> markets = Misc.getPlayerMarkets(true);
         Collections.shuffle(markets);
         if (markets.isEmpty()) return null;
-        return markets.get(0);
+        for (MarketAPI market : markets) {
+            if(market.getMemory().contains("$nex_playerOutpost")){
+                continue;
+            }
+            return market;
+
+        }
+        return null;
     }
 
     public void reloadEvents() {

@@ -5,6 +5,7 @@ import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.ids.Submarkets;
+import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
@@ -52,9 +53,10 @@ public class MikoshiFacility extends BaseIndustry {
     protected void addPostDemandSection(TooltipMakerAPI tooltip, boolean hasDemand, IndustryTooltipMode mode) {
         super.addPostDemandSection(tooltip, hasDemand, mode);
         if(mode.equals(IndustryTooltipMode.NORMAL)){
+            tooltip.addSectionHeading("Soulkiller", Alignment.MID,10f);
             if(conversionStarted){
                 if(hasMetDemand){
-                    tooltip.addPara("Soulkiller process active!\nTransfering data into Theta Core.", Misc.getNegativeHighlightColor(),10f);
+                    tooltip.addPara("Soulkiller process active!\nTransferring data into Theta Core.", Misc.getNegativeHighlightColor(),10f);
                     if(threshold-conversion<=1){
                         tooltip.addPara("Process will end in %s day",10f, Color.ORANGE,""+(int)(threshold-conversion));
                     }
@@ -67,7 +69,9 @@ public class MikoshiFacility extends BaseIndustry {
                 }
 
             }
-            tooltip.addPara("Warning! We should not overuse Soulkiller! This will lead to get unwanted attention from our population, therefore decreasing stability by a lot! Recommend waiting around 180 days, for every usage of Soulkiller.",Misc.getNegativeHighlightColor(),10f);
+            tooltip.addPara("Warning! We should not use Soukiller procedure too often, to not cause suspicion from our population and lower ranking officials.",Misc.getNegativeHighlightColor(),10f);
+            tooltip.addPara("Recommend 180 days of break between every usage of Soulkiller",Misc.getNegativeHighlightColor(),10f);
+
         }
     }
 

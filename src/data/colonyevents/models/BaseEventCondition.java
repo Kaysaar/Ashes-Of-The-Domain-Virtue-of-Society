@@ -6,6 +6,7 @@ import com.fs.starfarer.campaign.econ.MarketCondition;
 
 public abstract class BaseEventCondition extends BaseMarketConditionPlugin {
     public float timeSincePlaced = 0f;
+    public boolean isToBeRemoved = false;
 
     @Override
     public void apply(String id) {
@@ -26,6 +27,7 @@ public abstract class BaseEventCondition extends BaseMarketConditionPlugin {
     public void removeWhenPassCertainTime(float amountOfDaysPassed){
         if(timeSincePlaced>=amountOfDaysPassed){
             market.removeCondition(this.getModId());
+            isToBeRemoved=true;
         }
     }
 

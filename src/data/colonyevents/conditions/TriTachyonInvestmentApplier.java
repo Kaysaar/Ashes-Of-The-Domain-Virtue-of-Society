@@ -13,6 +13,7 @@ public class TriTachyonInvestmentApplier extends BaseEventCondition {
     @Override
     public void apply(String id) {
         super.apply(id);
+        if(!isToBeRemoved)
         market.getIndustry(Industries.POPULATION).getUpkeep().modifyFlat("tri_tachyon_mendling", 20000, "Tri Tachyon Cut");
 
     }
@@ -29,6 +30,7 @@ public class TriTachyonInvestmentApplier extends BaseEventCondition {
         super.createTooltipAfterDescription(tooltip, expanded);
         tooltip.addPara("Due to investment in this colony currently Tri Tachyon takes around %s credits per month",10f, Color.ORANGE,""+ Misc.getDGSCredits(20000));
     }
+
 
     @Override
     public void advance(float amount) {

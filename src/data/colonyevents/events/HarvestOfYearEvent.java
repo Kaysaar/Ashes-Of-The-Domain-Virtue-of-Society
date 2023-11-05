@@ -37,7 +37,7 @@ public class HarvestOfYearEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("Administrator, our reports from "+currentlyAffectedMarket.getName()+ "indicate, that recent harvest of food has never been that great.Amount of food that was collected is nearly enough to feed planet for few years." +
+        tooltip.addPara("Administrator, our reports from "+currentlyAffectedMarket.getName()+ " indicate, that recent harvest of food has never been that great.Amount of food that was collected is nearly enough to feed planet for few years." +
                 "Some people suggest using that surplus, to make feast for entire planet, which would boost everyone's morale, others suggest selling that for huge profits. What are you going to do administrator?", INFORMATIVE,10f);
     }
 

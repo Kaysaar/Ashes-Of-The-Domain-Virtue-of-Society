@@ -5,7 +5,6 @@ import com.fs.starfarer.api.characters.MarketSkillEffect;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.campaign.intel.events.HostileActivityEventIntel;
 import com.fs.starfarer.api.impl.campaign.intel.events.HostileActivityManager;
-import com.fs.starfarer.api.impl.campaign.intel.events.HostileActivitySuppression;
 import com.fs.starfarer.api.impl.campaign.skills.Hypercognition;
 
 public class FourthDimensionalSight {

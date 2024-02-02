@@ -30,10 +30,11 @@ public class ThetaProjectEvent extends AoTDColonyEvent {
 
     @Override
     public boolean canOccur(MarketAPI marketAPI) {
-        if (this.spec.getEventId().equals("theta_finding_facility")) {
-            return marketAPI.hasCondition("pre_collapse_facility") && marketAPI.getSize() >= 4 && marketAPI.hasIndustry("researchfacility") && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= 500000;
-        }
         return false;
+//        if (this.spec.getEventId().equals("theta_finding_facility")) {
+//            return marketAPI.hasCondition("pre_collapse_facility") && marketAPI.getSize() >= 4 && marketAPI.hasIndustry("researchfacility") && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= 500000;
+//        }
+//        return false;
     }
 
     @Override

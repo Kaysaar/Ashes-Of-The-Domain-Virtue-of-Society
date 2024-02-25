@@ -17,6 +17,12 @@ public class BreakFromEventsCondition extends BaseEventCondition {
     }
 
     public void unapply(String id) {
+
+    }
+
+    @Override
+    public void advance(float amount) {
+        super.advance(amount);
         removeWhenPassCertainTime(timeInBetween);
     }
 

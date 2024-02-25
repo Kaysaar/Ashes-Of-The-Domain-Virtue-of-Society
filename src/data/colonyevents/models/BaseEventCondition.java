@@ -20,14 +20,22 @@ public abstract class BaseEventCondition extends BaseMarketConditionPlugin {
 
     @Override
     public void advance(float amount) {
-        super.advance(amount);
+        if(timeSincePlaced==0){
+            market.getMemory().set("$"+getModId()+"event_timer",0);
+        }
+        if(market.getMemory().contains("$"+getModId()+"event_timer")){
+            timeSincePlaced = market.getMemory().getFloat("$"+getModId()+"event_timer");
+        }
         timeSincePlaced+= Global.getSector().getClock().convertToDays(amount);
+        market.getMemory().set("$"+getModId()+"event_timer",timeSincePlaced);
+
     }
 
     public void removeWhenPassCertainTime(float amountOfDaysPassed){
         if(timeSincePlaced>=amountOfDaysPassed){
-            market.removeCondition(this.getModId());
-            isToBeRemoved=true;
+            market.removeCondition(condition.getId());
+            market.getMemory().unset("$"+getModId()+"event_timer");
+            return;
         }
     }
 

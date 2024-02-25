@@ -17,16 +17,14 @@ public class MikoshiUsageApplier extends BaseEventCondition {
     @Override
     public void unapply(String id) {
         super.unapply(id);
-        removeWhenPassCertainTime(threshold);
         market.getStability().unmodifyFlat("theta_mendling_"+getModId());
     }
 
     @Override
-    public void removeWhenPassCertainTime(float amountOfDaysPassed) {
-        if(timeSincePlaced>=amountOfDaysPassed){
-            market.removeCondition(this.getModId());
-            removed = true;
-        }
-
+    public void advance(float amount) {
+        super.advance(amount);
+        removeWhenPassCertainTime(threshold);
     }
+
+
 }

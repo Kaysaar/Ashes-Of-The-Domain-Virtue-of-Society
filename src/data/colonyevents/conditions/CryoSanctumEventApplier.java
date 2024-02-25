@@ -28,13 +28,13 @@ public class CryoSanctumEventApplier extends BaseEventCondition {
         super.unapply(id);
         market.getStability().unmodifyFlat("organs");
         market.getIndustry(Industries.POPULATION).getUpkeep().unmodifyFlat("organs");
+
+    }
+    @Override
+    public void advance(float amount) {
+        super.advance(amount);
         removeWhenPassCertainTime(maxDaysOnMarket);
     }
 
 
-
-    @Override
-    public void advance(float amount) {
-        super.advance(amount);
-    }
 }

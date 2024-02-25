@@ -34,7 +34,11 @@ public class HarvestOfTheYearApplier extends BaseEventCondition {
                 mutableCommodityQuantity.getQuantity().unmodifyFlat("harvest");
             }
         }
-        market.getStability().unmodifyFlat("harvest");
+        market.getStability().unmodifyFlat("harvest");;
+    }
+    @Override
+    public void advance(float amount) {
+        super.advance(amount);
         removeWhenPassCertainTime(days);
     }
 }

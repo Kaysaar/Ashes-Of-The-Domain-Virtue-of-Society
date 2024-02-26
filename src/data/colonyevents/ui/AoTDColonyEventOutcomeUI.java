@@ -263,7 +263,7 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
             scrolerOfOutcome = optionDescrpSaved.getExternalScroller().getYOffset();
         }
         if(prev!=null&&prev.equals(selected)){
-            eventToSolve.executeDecision(selected);
+            eventToSolve.fullyExecuteDecision(selected);
             eventToSolve.isWaitingForDecision = false;
             eventToSolve.haveFiredAtLeastOnce=true;
             eventToSolve.cooldownBeforeEventCanOccur = eventToSolve.getSpec().getBaseCooldown();

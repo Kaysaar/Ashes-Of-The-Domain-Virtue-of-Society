@@ -56,11 +56,15 @@ public class AoTDColonyEvent  {
 
     }
     public void executeDecision(String currentDecision){
-        currentlyAffectedMarket.addCondition("fired_event");
-        prevDecisionId = currentDecision;
-        this.haveFiredAtLeastOnce = true;
-        currentlyAffectedMarket=null;
     }
+     public void fullyExecuteDecision(String currentDecision){
+        executeDecision(currentDecision);
+         currentlyAffectedMarket.addCondition("fired_event");
+         prevDecisionId = currentDecision;
+         this.haveFiredAtLeastOnce = true;
+         currentlyAffectedMarket=null;
+     }
+
     public void overrideOptions(){
 
     }

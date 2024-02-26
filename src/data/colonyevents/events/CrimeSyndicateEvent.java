@@ -85,7 +85,6 @@ public class CrimeSyndicateEvent extends AoTDColonyEvent {
 
     @Override
     public void executeDecision(String currentDecision) {
-        super.executeDecision(currentDecision);
         if(currentDecision.equals("crime_beginning")){
             currentlyAffectedMarket.addCondition("crime_syndicate_beginning");
             currentlyAffectedMarket.getMemory().set("$aotd_had_crime_event",true);
@@ -107,6 +106,6 @@ public class CrimeSyndicateEvent extends AoTDColonyEvent {
             currentlyAffectedMarket.addCondition("crime_syndicate_stabilize");
 
         }
-
+        super.executeDecision(currentDecision);
     }
 }

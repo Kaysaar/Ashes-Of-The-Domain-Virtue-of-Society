@@ -31,13 +31,13 @@ public class SafetyConditionsApplier extends BaseEventCondition {
             }
         }
         market.getStability().unmodifyFlat("safety");
-        removeWhenPassCertainTime(daysThatModifierlast);
+
     }
 
     @Override
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
         super.createTooltipAfterDescription(tooltip, expanded);
-
+        removeWhenPassCertainTime(daysThatModifierlast);
     }
 
 }

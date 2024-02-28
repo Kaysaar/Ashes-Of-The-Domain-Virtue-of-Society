@@ -24,7 +24,7 @@ public class CrimeSyndicateEvent extends AoTDColonyEvent {
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
         super.generateDescriptionOfEvent(tooltip);
-        if(this.spec.getEventId().equals("crime_syndicate_start")){
+        if(this.spec.getEventId().equals("crime_syndicate_beginning")){
             tooltip.addPara("Administrator, recent unrest caused by outside events on "+currentlyAffectedMarket.getName()+ "have caused the creation of a massive crime syndicate, across the entire world.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
             tooltip.addPara("Crime rate has gone rampant , and our police forces can’t contain this massive threat",Misc.getTooltipTitleAndLightHighlightColor(),10f);
             tooltip.addPara("Currently this world it’s in full disarray.",Misc.getNegativeHighlightColor(),10f);

@@ -14,6 +14,7 @@ public class UndergroundHiveApplier extends BaseEventCondition {
     @Override
     public void apply(String id) {
         super.apply(id);
+        if(isToBeRemoved)return;
         if(getModId().contains("hive_defence")){
             market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD)
                     .modifyMult("hive_effect", 1.25f, "Hive creatures");

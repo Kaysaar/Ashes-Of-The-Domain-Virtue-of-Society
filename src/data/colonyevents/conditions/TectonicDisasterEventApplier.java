@@ -18,6 +18,7 @@ public class TectonicDisasterEventApplier extends BaseEventCondition implements 
     @Override
     public void apply(String id) {
         super.apply(id);
+        if(isToBeRemoved)return;
         for (Industry industry : market.getIndustries()) {
             if(!industry.isFunctional())continue;
             if(industry.getSpecialItem()!=null&&industry.getSpecialItem().getId().equals(Items.MANTLE_BORE)){

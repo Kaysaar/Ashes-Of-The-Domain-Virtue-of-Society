@@ -9,6 +9,7 @@ public class SafetyConditionsApplier extends BaseEventCondition {
     @Override
     public void apply(String id) {
         super.apply(id);
+        if(isToBeRemoved)return;
         if(this.getModId().contains("safety_achieved")){
             for (Industry industry : market.getIndustries()) {
                 if(industry.getSpec().hasTag("heavyindustry")||industry.getSpec().hasTag("lightindustry")){

@@ -16,6 +16,7 @@ public class HarvestOfTheYearApplier extends BaseEventCondition {
     @Override
     public void apply(String id) {
         super.apply(id);
+        if(isToBeRemoved)return;
         for (Industry industry : market.getIndustries()) {
             if(industry.getSpec().hasTag("farming"))continue;
             for (MutableCommodityQuantity mutableCommodityQuantity : industry.getAllSupply()) {

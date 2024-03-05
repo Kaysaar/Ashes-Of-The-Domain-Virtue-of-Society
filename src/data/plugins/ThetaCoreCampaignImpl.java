@@ -11,6 +11,7 @@ public class ThetaCoreCampaignImpl extends BaseCampaignPlugin {
         if(commodityId.equals("theta_core")){
             return new PluginPick<AICoreAdminPlugin>(new ThetaCoreAdmin(),PickPriority.MOD_SET);
         }
+
         return null;
     }
 

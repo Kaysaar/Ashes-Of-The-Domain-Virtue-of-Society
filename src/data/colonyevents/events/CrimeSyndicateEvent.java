@@ -29,7 +29,7 @@ public class CrimeSyndicateEvent extends AoTDColonyEvent {
             tooltip.addPara("Crime rate has gone rampant , and our police forces can’t contain this massive threat",Misc.getTooltipTitleAndLightHighlightColor(),10f);
             tooltip.addPara("Currently this world it’s in full disarray.",Misc.getNegativeHighlightColor(),10f);
         }
-        if(this.spec.getEventId().equals("crime_syndicate_resolve")&&this.currentlyAffectedMarket.getStabilityValue()<7){
+        if(this.spec.getEventId().equals("crime_syndicate_resolve")&&currentlyAffectedMarket.getStabilityValue()<7){
             tooltip.addPara("Administrator, recent unrest caused by outside events on "+currentlyAffectedMarket.getName()+ "have caused the creation of a massive crime syndicate, across the entire world.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
             tooltip.addPara("It has been around few months, we have failed to establish order, in which time crime organization's power grew",Misc.getTooltipTitleAndLightHighlightColor(),10f);
             tooltip.addPara("Because of this, one of crime lords came here, with proposal",Misc.getTooltipTitleAndLightHighlightColor(),10f);
@@ -37,7 +37,7 @@ public class CrimeSyndicateEvent extends AoTDColonyEvent {
             tooltip.addPara("Alternatively, one of generals proposed to gather elite strike force, to fully eradicate crime syndicate across entire planet, which will cause much more unrest, than currently we have",Misc.getNegativeHighlightColor(),10f);
 
         }
-        if(this.spec.getEventId().equals("crime_syndicate_resolve")&&this.currentlyAffectedMarket.getStabilityValue()>=7){
+        if(this.spec.getEventId().equals("crime_syndicate_resolve")&&currentlyAffectedMarket.getStabilityValue()>=7){
             tooltip.addPara("Administrator, recent unrest caused by outside events on "+currentlyAffectedMarket.getName()+ "have caused the creation of a massive crime syndicate, across the entire world.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
             tooltip.addPara("It has been around few months, we successfully established back order on this planet, so it can again prosper under justice.",Misc.getPositiveHighlightColor(),10f);
 

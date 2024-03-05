@@ -10,6 +10,7 @@ public class FoodExperimentEventApplier extends BaseEventCondition {
     @Override
     public void apply(String id) {
         super.apply(id);
+        if(isToBeRemoved)return;
         if(getModId().contains("food_experiment_flowers")){
             market.getAccessibilityMod().modifyFlat(foodExperiment,0.20f,"Amusing Flowers");
         }

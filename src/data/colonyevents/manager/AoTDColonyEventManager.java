@@ -188,7 +188,8 @@ public class AoTDColonyEventManager {
             logger.info("Passed first interval of guaranteed event");
             AoTDGuarantedEvent guarantedEvent = popFirstGuaranteedEvent();
             AoTDColonyEvent event = pickGuaranteedEvent(guarantedEvent);
-            if (event != null) {
+
+            if (event != null&& checkForMarketExistence(event)) {
                 onGoingEvent = event;
                 onGoingEvent.daysToMakeDecision = 7;
                 lastEvent = intervalMin - 7;
@@ -228,7 +229,15 @@ public class AoTDColonyEventManager {
 
 
     }
-
+    public boolean checkForMarketExistence(AoTDColonyEvent event){
+        if(event.currentlyAffectedMarket==null)return false;
+        for (MarketAPI playerMarket : Misc.getPlayerMarkets(true)) {
+            if(playerMarket.getId().equals(event.currentlyAffectedMarket.getId())){
+                return true;
+            }
+        }
+        return false;
+    }
     public void updateEvent(AoTDColonyEvent eventUpdated) {
         for (AoTDColonyEvent event : events) {
             if (event.getSpec().getEventId().equals(onGoingEvent.getSpec().getEventId())) {

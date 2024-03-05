@@ -15,6 +15,7 @@ public class CrimeSyndicateApplier extends BaseEventCondition implements Economy
     @Override
     public void apply(String id) {
         super.apply(id);
+        if(isToBeRemoved)return;
         if(condition.getId().equals("crime_syndicate_beginning")){
             market.getStability().modifyFlat("crime_beginning",-3,"Rampant Crime");
             market.getAccessibilityMod().modifyFlat("crime_beginning",-0.4f,"Rampant Crime");

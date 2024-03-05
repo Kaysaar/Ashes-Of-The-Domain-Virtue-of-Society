@@ -13,6 +13,7 @@ public class CryoSanctumEventApplier extends BaseEventCondition {
     @Override
     public void apply(String id) {
         super.apply(id);
+        if(isToBeRemoved)return;
         if(getModId().equals("cryosanctum_event_organs")){
             market.getStability().modifyFlat("organs",-3,"Recent Event");
         }

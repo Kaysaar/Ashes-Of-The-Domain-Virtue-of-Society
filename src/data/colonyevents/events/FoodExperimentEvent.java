@@ -14,10 +14,10 @@ public class FoodExperimentEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("In the Desert world of" +currentlyAffectedMarket.getName()+ " your team of scientists found old labs from the past era.",INFORMATIVE,10f);
-        tooltip.addPara("t seems to be some sort of hydroponics research center before it was abandoned.",INFORMATIVE,10f);
-        tooltip.addPara("Our team has found a few plant seeds that were incomplete.",INFORMATIVE,10f);
-        tooltip.addPara("We need to choose one of three projects, as the structure can collapse at any time",INFORMATIVE,10f);
+        tooltip.addPara("On the Desert world of" +currentlyAffectedMarket.getName()+ " your team of scientists found old labs built before The Collapse.",INFORMATIVE,10f);
+        tooltip.addPara("It seems to have been some sort of agriculture research center focusing on development of hydroponics before it was abandoned.",INFORMATIVE,10f);
+        tooltip.addPara("Our team has found some of the plant seeds that researchers used to work on back when the lab was still active.",INFORMATIVE,10f);
+        tooltip.addPara("We need to choose one of the three projects, as the structure can collapse at any time.",INFORMATIVE,10f);
     }
 
     @Override
@@ -46,15 +46,15 @@ public class FoodExperimentEvent extends AoTDColonyEvent {
     public void showOptionOutcomes(TooltipMakerAPI tooltip, String optionId) {
         switch (optionId){
             case "fe_op1":
-                tooltip.addPara("The market's farming type industries increase production by 1 permanently.",POSITIVE,10f);
-                tooltip.addPara("Increase market income by 10% permanently.",POSITIVE,10f);
+                tooltip.addPara("The market's agriculture industries have their production permamently increased by 1 unit.",POSITIVE,10f);
+                tooltip.addPara("Market income is permamently increased by 10%.",POSITIVE,10f);
                 break;
             case "fe_op2":
-                tooltip.addPara("Increase market accessibility by 20%",POSITIVE,10f);
-                tooltip.addPara("Increase market income by 10% permanently.",POSITIVE,10f);
+                tooltip.addPara("Market accessibility is increased by 20%",POSITIVE,10f);
+                tooltip.addPara("Market income is permamently increased by 10%.",POSITIVE,10f);
                 break;
             case "fe_op3":
-                tooltip.addPara("Decrease market hazard railing by 35%",POSITIVE,10f);
+                tooltip.addPara("Market's hazard rating is decreased by 35%.",POSITIVE,10f);
                 break;
         }
     }

@@ -13,7 +13,7 @@ public class SafetyConditionsApplier extends BaseEventCondition {
         if(this.getModId().contains("safety_achieved")){
             for (Industry industry : market.getIndustries()) {
                 if(industry.getSpec().hasTag("heavyindustry")||industry.getSpec().hasTag("lightindustry")){
-                    industry.getUpkeep().modifyMultAlways("safety",1.1f,"Safetry Measures");
+                    industry.getUpkeep().modifyMultAlways("safety",1.1f,"Safety Measures");
                 }
             }
         }

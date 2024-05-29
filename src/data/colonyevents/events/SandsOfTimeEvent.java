@@ -71,35 +71,35 @@ public class SandsOfTimeEvent extends AoTDColonyEvent {
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
         String eventId = this.getSpec().getEventId();
         if (eventId.equals("accidental_finding")) {
-            tooltip.addPara("Administrator, during recent mining expeditions we have discovered hidden vault." +
-                    "Our scientists indicate, that this vault may be from Pre Collapse era. Some people suggest leaving this vault as it is, but our scientist believe, that this vault might have cointain some valuable things.", 10f);
+            tooltip.addPara("Administrator, during our recent mining expeditions we have discovered a hidden vault." +
+                    "Our scientists indicate, that this vault might be from the Pre Collapse era. Some people suggest leaving this vault as it is, but our scientist believe, that this vault might have cointain some valuable things.", 10f);
         }
         if (eventId.equals("accidental_finding_vault")) {
-            tooltip.addPara("Administrator, our team has began to unseal doors to vault, that we have recently discovered.However those doors seems to be impressively strong.There has been suggestions of using antimatter charges to blast those doors. One scientist from expedition also suggested,that it's possible to " +
-                    "hack vault doors.However there are voices of concern about unsealing this vault, especially that if something was sealed, then should we open it ?", 10f);
+            tooltip.addPara("Administrator, our team has began to unseal the vault that we have recently discovered. However those doors turn out to be surprisingly strong. There have been suggestions of using antimatter charges to blast those doors open. One scientist from our expedition also suggested that it could be possible to " +
+                    "hack the vault doors. However there also are some voices of concern about unsealing this vault, if something was sealed maybe there was a good reason for it?", 10f);
         }
         if (eventId.equals("accidental_finding_vault_hacking")) {
-            tooltip.addPara("Administrator hacking was success facility is dormant what should we do?", 10f);
+            tooltip.addPara("Administrator, the hacking was successful, the facility appears to be dormant, what should we do next?", 10f);
         }
         if (eventId.equals("accidental_finding_vault_trigger_defences")) {
-            tooltip.addPara("Unfortunately our actions have awakened Automated Defence System and fighting spread through entire mining. ", 10f);
+            tooltip.addPara("Unfortunately our actions have activated vault's Automated Defence Systems and now our security forces are engaged in fights across the entire mine.", 10f);
         }
 
         if (eventId.equals("accidental_finding_vault_outcome")) {
             if(AoTDColonyEventManager.getInstance().getEventById(AoTDColonyEventManager.getInstance().previousGuaranteedEventId).prevDecisionId.equals("accidental_finding_hacking_op1")){
-                tooltip.addPara("Administrator our expedition was a success, we have not suffered any loses and we were able to retrieve certain artifacts", 10f);
+                tooltip.addPara("Administrator, our expedition was a success, we haven't suffered any loses and we were able to retrieve some artifacts from the vault.", 10f);
             }
             else{
-                tooltip.addPara("Administrator our expedition was a success, unfortunately we have suffered heavy loses. At least we have retrieved a lot of artifacts from vault.", 10f);
+                tooltip.addPara("Administrator, our expedition was a success, but unfortunately we have suffered heavy losses. At least we managed to retrieve some artifacts from vault.", 10f);
             }
 
         }
         if(eventId.equals("accidental_finding_vault_antimatter")){
-            tooltip.addPara("Administrator, explosion caused by antimatter charges caused huge tectonic instability. We must evacuate team NOW!", Color.ORANGE, 10f);
+            tooltip.addPara("Administrator, explosion caused by antimatter charges caused massive structural damage to the mine. We must evacuate the expedition team NOW!", Color.ORANGE, 10f);
 
         }
         if(eventId.equals("accidental_finding_vault_antimatter_outcome")){
-            tooltip.addPara("Administrator, our team has not made in time to escape, moreover this explosion collapsed one of major settlements in our colony , disrupting all mining operations , and killings thousands of thousands of people", Color.ORANGE, 10f);
+            tooltip.addPara("Administrator, our expedition team couldn't escape before the mine has collapsed, moreover this explosion collapsed one of major settlements in our colony, disrupting all of our mining operations and killing thousands of people.", Color.ORANGE, 10f);
 
         }
 
@@ -198,37 +198,37 @@ public class SandsOfTimeEvent extends AoTDColonyEvent {
     public void showOptionOutcomes(TooltipMakerAPI tooltip, String optionId) {
         switch (optionId) {
             case "accidental_finding_op1":
-                tooltip.addPara("Our team shall start working on unsealing those gates, to uncover mysteries of " + currentlyAffectedMarket.getName() + " vault", Misc.getHighlightedOptionColor(), 15f);
+                tooltip.addPara("Our team shall start working on unsealing these doors to uncover mysteries of " + currentlyAffectedMarket.getName() + " vault.", Misc.getHighlightedOptionColor(), 15f);
                 break;
             case "accidental_finding_op2":
-                tooltip.addPara("We will place explosive charges to fully seal entrance to vault, never to be discovered again", Misc.getHighlightedOptionColor(), 10f);
+                tooltip.addPara("We will collapse this part of the mine in order to fully seal entrance to vault, so it may never be discovered again.", Misc.getHighlightedOptionColor(), 10f);
                 break;
             case "vault_op1":
-                tooltip.addPara("Team will start cracking cyber defences, to open vault", Misc.getHighlightedOptionColor(), 10f);
+                tooltip.addPara("Our team will start cracking the code that protects the vault's doors.", Misc.getHighlightedOptionColor(), 10f);
                 break;
             case "vault_op2":
-                tooltip.addPara("Expedition team will carefully planet antimatter charges to destroy doors", Misc.getHighlightedOptionColor(), 10f);
+                tooltip.addPara("Our expedition team will carefully plant antimatter charges to destroy the door.", Misc.getHighlightedOptionColor(), 10f);
                 break;
             case "vault_op3":
-                tooltip.addPara("We will seal path to this vault forever!", Misc.getHighlightedOptionColor(), 10f);
+                tooltip.addPara("We will seal the path to this vault forever!", Misc.getHighlightedOptionColor(), 10f);
                 break;
             case "accidental_finding_hacking_op1":
-                tooltip.addPara("Our team will only use small portion of power to power up only basic systems of facility", Misc.getHighlightedOptionColor(), 10f);
+                tooltip.addPara("Our team will only use a small amount of power that will be enough to power up only the most basic systems of the facility.", Misc.getHighlightedOptionColor(), 10f);
                 break;
             case "accidental_finding_hacking_op2":
-                tooltip.addPara("We will fully power enter facility to access it's entirety", Misc.getHighlightedOptionColor(), 10f);
+                tooltip.addPara("We will fully power the entire facility to access it in its entirety", Misc.getHighlightedOptionColor(), 10f);
                 break;
             case "accidental_finding_fighting_op1":
-                tooltip.addPara("Lose 300.000 Credits\nDisrupt mining for 120 days", Misc.getNegativeHighlightColor(), 10f);
+                tooltip.addPara("Lose 300.000 Credits\nDisrupt mining operations for 120 days", Misc.getNegativeHighlightColor(), 10f);
                 break;
             case "accidental_finding_conclusion_op1":
                 prevEvent = AoTDColonyEventManager.getInstance().getEventById(AoTDColonyEventManager.getInstance().previousGuaranteedEventId);
                 if(prevEvent.prevDecisionId.equals("accidental_finding_hacking_op1")){
-                    tooltip.addPara("Gained 3 artefacts one of them being Nanoforge with Pristine quality.\nItems have been transported to "+currentlyAffectedMarket.getName()+" local storage", Misc.getPositiveHighlightColor(), 10f);
+                    tooltip.addPara("Acquired 3 artifacts, with one of them being a Nanoforge of Pristine quality.\nThe items have been transported to "+currentlyAffectedMarket.getName()+"'s local storage", Misc.getPositiveHighlightColor(), 10f);
 
                 }
                 else{
-                    tooltip.addPara("Gained 4 artefacts.\nItems have been transported to "+currentlyAffectedMarket.getName()+" local storage", Misc.getPositiveHighlightColor(), 10f);
+                    tooltip.addPara("Acquired 4 artifacts.\nThe items have been transported to "+currentlyAffectedMarket.getName()+"'s local storage", Misc.getPositiveHighlightColor(), 10f);
 
                 }
                 break;
@@ -238,7 +238,7 @@ public class SandsOfTimeEvent extends AoTDColonyEvent {
 
                 break;
             case "accidental_finding_antimatter_outcome_op1":
-                tooltip.addPara("Reduce size of "+currentlyAffectedMarket.getName()+ " by one if size is greater than 3\nDistrupt all mining operations for 180 days", Misc.getNegativeHighlightColor(), 10f);
+                tooltip.addPara("Reduce colony size of "+currentlyAffectedMarket.getName()+ " by one if size is greater than 3\nDistrupt all mining operations for 180 days", Misc.getNegativeHighlightColor(), 10f);
 
                 break;
         }

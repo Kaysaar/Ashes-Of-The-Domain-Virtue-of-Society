@@ -64,7 +64,7 @@ public class UAFBakeryDefenderFleetManager extends SourceBasedFleetManager {
         initDefenderProperties(random,fleet,false);
         fleet.setLocation(source.getLocation().x,source.getLocation().y);
         fleet.setFacing(random.nextFloat()*360f);
-        fleet.addAssignment(FleetAssignment.DEFEND_LOCATION,source,1000000f,"Protecting the confectionary secret recipe.");
+        fleet.addAssignment(FleetAssignment.DEFEND_LOCATION,source,1000000f,"Protecting the confectionery's secret recipe.");
 
         fleet.setFaction(source.getMarket().getFaction().getId());
         fleet.setName("Pastry Copyright Protectors");

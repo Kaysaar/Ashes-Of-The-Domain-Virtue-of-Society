@@ -17,13 +17,13 @@ public class UndergroundHiveApplier extends BaseEventCondition {
         if(isToBeRemoved)return;
         if(getModId().contains("hive_defence")){
             market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD)
-                    .modifyMult("hive_effect", 1.25f, "Hive creatures");
+                    .modifyMult("hive_effect", 1.25f, "Hive Creatures");
         }
         if(getModId().contains("hive_food")){
             for (Industry industry : market.getIndustries()) {
                 for (MutableCommodityQuantity mutableCommodityQuantity : industry.getAllSupply()) {
                     if(mutableCommodityQuantity.getCommodityId().equals(Commodities.LUXURY_GOODS)){
-                        industry.getDemand(Commodities.MARINES).getQuantity().modifyFlat(hiveEffect,4,"Worker's protection");
+                        industry.getDemand(Commodities.MARINES).getQuantity().modifyFlat(hiveEffect,4,"Protection of workers");
                         if(getMaxDeficit(industry,Commodities.MARINES).two==0){
                             mutableCommodityQuantity.getQuantity().modifyFlat(hiveEffect,2,"Hive Eggs");
                         }

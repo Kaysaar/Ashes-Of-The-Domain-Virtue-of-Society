@@ -69,12 +69,12 @@ public class CrimeSyndicateApplier extends BaseEventCondition implements Economy
             tooltip.addPara("%s stability and %s accessibility ",10f, Misc.getNegativeHighlightColor(),"-3","-40%");
         }
         if(condition.getId().equals("crime_syndicate_resolve_deal")){
-            tooltip.addPara("%s stability, %s accessibility and %s ground multiplier ",10f, Misc.getNegativeHighlightColor(),"-1","-40%","1.5");
+            tooltip.addPara("%s stability, %s accessibility and %s ground defense strength multiplier ",10f, Misc.getNegativeHighlightColor(),"-1","-40%","1.5");
 
         }
         if(condition.getId().equals("crime_syndicate_resolve_violence")){
-            tooltip.addPara("%s stability, %s accessibility and %s ground multiplier ",10f, Misc.getNegativeHighlightColor(),"-1","-40%","1.5");
-            tooltip.addPara("%s - %s credits per month from black market ",10f, Color.ORANGE,Misc.getDGSCredits(10000),Misc.getDGSCredits(40000));
+            tooltip.addPara("%s stability, %s accessibility and %s ground defense strength multiplier ",10f, Misc.getNegativeHighlightColor(),"-1","-40%","1.5");
+            tooltip.addPara("%s - %s credits per month from black market trade",10f, Color.ORANGE,Misc.getDGSCredits(10000),Misc.getDGSCredits(40000));
 
 
         }

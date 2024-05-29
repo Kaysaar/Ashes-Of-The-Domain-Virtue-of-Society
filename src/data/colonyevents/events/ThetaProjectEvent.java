@@ -42,46 +42,46 @@ public class ThetaProjectEvent extends AoTDColonyEvent {
         super.generateDescriptionOfEvent(tooltip);
         if (this.spec.getEventId().equals("theta_finding_facility")) {
             tooltip.addPara("Administrator, we have uncovered abandoned research facility on" + currentlyAffectedMarket.getName() + ".", INFORMATIVE, 10f);
-            tooltip.addPara("We should investigate it!", INFORMATIVE, 10f);
+            tooltip.addPara("We should investigate it immediately!", INFORMATIVE, 10f);
         }
         if (this.spec.getEventId().equals("theta_expl_fac")) {
             tooltip.addPara("Administrator", INFORMATIVE, 10f);
-            tooltip.addPara("Exciting revelations from " + currentlyAffectedMarket.getName() + " have unveiled a hidden treasure trove - a clandestine research facility overseen by the Tri Tachyon Corporation and Ko Combine.", INFORMATIVE, 10f);
-            tooltip.addPara("The enigmatic past of this facility was skillfully shrouded from prying eyes, guarding its secrets from those who might disrupt it's mysteries.", INFORMATIVE, 10f);
-            tooltip.addPara("Regrettably, our expedition faced challenges in extracting valuable data from the damaged terminals. However, within the cryptic fragments of information, two words persistently surfaced, demanding our attention:", INFORMATIVE, 10f);
+            tooltip.addPara("Exciting news from " + currentlyAffectedMarket.getName() + ", we have unveiled a hidden treasure trove - a clandestine research facility overseen by the Tri Tachyon Corporation and Ko Combine.", INFORMATIVE, 10f);
+            tooltip.addPara("The enigmatic past of this facility was skillfully shrouded from prying eyes, guarding its secrets from those who might want to uncover it's mysteries.", INFORMATIVE, 10f);
+            tooltip.addPara("Regrettably, our expedition faced challenges in extracting any sort of valuable data from the damaged terminals. However, within the cryptic fragments of the information, two words persistently came up, getting attention of our expedition team:", INFORMATIVE, 10f);
             tooltip.addPara("Project Charon", Color.MAGENTA, 10f);
-            tooltip.addPara("The allure of this discovery is undeniable, and we remain committed to unraveling the enigma surrounding this intriguing project.", INFORMATIVE, 10f);
+            tooltip.addPara("The alluring nature of this discovery is undeniable, we remain committed to unraveling the enigma surrounding this intriguing project.", INFORMATIVE, 10f);
         }
         if (this.spec.getEventId().equals("theta_expl_fac_continue")) {
             switch (previiousExpedition) {
                 case "bs_fac_op1":
                     if (!visitedDirectorRoom) {
 
-                        tooltip.addPara("Our investigation of main server room have yielded more information about Project Charon", POSITIVE, 10f);
-                        tooltip.addPara("Most of data has been heavily encrypted.Our scientists are not able to deduce anything useful from it. ", NEGATIVE, 10f);
-                        tooltip.addPara("From what we have investigated so far, Project Charon was a initiative, ordered by both corporation's higher ups. ", INFORMATIVE, 10f);
-                        tooltip.addPara("It was covered up to such extend, that no one in entire Domain was knowing about this project." +
-                                "They decided, that the Persean Sector will be perfect place for such things, due to low presence of Domain's authorities.", INFORMATIVE, 10f);
-                        tooltip.addPara("Immediately after exiting server room , it have collapsed, and now there is no option of going back", NEGATIVE, 10f);
-                        tooltip.addPara("But, data from it has been transferred, so we will try to decode it on our own", INFORMATIVE, 10f);
-                        tooltip.addPara("Moreover before we left server room we have discovered blueprints to what happens to be a quantum supercomputer designed by Ko Combine", INFORMATIVE, 10f);
-                        tooltip.addPara("Gain new structure : Archimedes QSC", POSITIVE, 10f);
+                        tooltip.addPara("Our investigation of main server room has yielded more information about Project Charon.", POSITIVE, 10f);
+                        tooltip.addPara("Most of the data has been heavily encrypted, and our scientists were not able to deduce anything useful from it. ", NEGATIVE, 10f);
+                        tooltip.addPara("From what we have investigated so far, Project Charon was a initiative, ordered by higher ups of both corporations. ", INFORMATIVE, 10f);
+                        tooltip.addPara("It was covered up to such extend, that no one in entire Domain knew about this project." +
+                                "They decided have that the Persean Sector will be perfect place for such projects, due to low presence of Domain's authorities.", INFORMATIVE, 10f);
+                        tooltip.addPara("Immediately after our scientists left the server room, it has collapsed, now there is no option of going back to it.", NEGATIVE, 10f);
+                        tooltip.addPara("But the data from it has been transferred to our own servers and databanks, so we will be able to try to decode on out own.", INFORMATIVE, 10f);
+                        tooltip.addPara("Moreover, before we left server room we have discovered blueprints to build what seems to be a quantum supercomputer, designed by Ko Combine.", INFORMATIVE, 10f);
+                        tooltip.addPara("Gain a new structure blueprint: Archimedes QSC", POSITIVE, 10f);
                         currentlyAffectedMarket.addIndustry("archimedes");
                         currentlyAffectedMarket.getIndustry("archimedes").startBuilding();
 
 
                     } else {
-                        tooltip.addPara("Our investigation of main server room have yielded more information about Project Charon", POSITIVE, 10f);
-                        tooltip.addPara("Due to fining encryption key in director office we have been able to decode all of data present there. ", POSITIVE, 10f);
-                        tooltip.addPara("From what we have investigated so far, Project Charon was a initiative, ordered by both corporation's higher ups. ", INFORMATIVE, 10f);
-                        tooltip.addPara("It was covered up to such extend, that no one in entire Domain was knowing about this project." +
-                                "They decided, that the Persean Sector will be perfect place for such things, due to low presence of Domain's authorities.", INFORMATIVE, 10f);
-                        tooltip.addPara("Project Charon was centered around  new type of AI core, Theta core to be exact." +
-                                "But, this is not fully AI, as we know, cause Project Charon was not about making new AI cores, no. ", INFORMATIVE, 10f);
-                        tooltip.addPara("True intention of Project Charon was transferring consciousness of person into AI core" +
-                                "Unfortunate it turned out, that consciousness was not transferred but rather copied experiments were abandoned, due to " +
-                                "lack of further funding after this failure. ", INFORMATIVE, 10f);
-                        tooltip.addPara("There is also a location of testing site, where possible theta cores might be located.", INFORMATIVE, 10f);
+                        tooltip.addPara("Our investigation of main server room has yielded more information about Project Charon.", POSITIVE, 10f);
+                        tooltip.addPara("Thanks to finding the encryption key in director's office we have been able to decode all of the data present there. ", POSITIVE, 10f);
+                        tooltip.addPara("From what we have investigated so far, Project Charon was a initiative, ordered by higher ups of both corporations. ", INFORMATIVE, 10f);
+                        tooltip.addPara("It was covered up to such extend, that no one in entire Domain knew about this project." +
+                                "They decided have that the Persean Sector will be perfect place for such projects, due to low presence of Domain's authorities.", INFORMATIVE, 10f);
+                        tooltip.addPara("Project Charon was centered around constructing a new type of a core, the Theta core." +
+                                "But these cores weren't supposed to be an inhabited by an AI, the goal of Project Charon was not about making a new type of AI cores. ", INFORMATIVE, 10f);
+                        tooltip.addPara("It's true intention was transferring consciousness of human being into Theta core, resulting in AI core with human personality, behaviors and perhaps even consciousness." +
+                                "Curiously, as it turns out consciousness is only getting copied over to the core instead of being transferred, and the strain put on brain of the human subject during the copying process is guaranteed to kill them. Yet the Theta cores have been proven to be fully functional." +
+                                "Unfortunately, further experiments were abandoned, due to lack of further funding after this failure. ", INFORMATIVE, 10f);
+                        tooltip.addPara("Along with this data, we also found a location of a testing site, where some theta cores might be located.", INFORMATIVE, 10f);
                         tooltip.addPara("Gain location of planet, where Theta Cores might be located", POSITIVE, 10f);
                         List<StarSystemAPI> starSystemAPIList = Global.getSector().getStarSystems();
                         Collections.shuffle(starSystemAPIList,new Random());
@@ -117,15 +117,15 @@ public class ThetaProjectEvent extends AoTDColonyEvent {
 
                 case "bs_fac_op2":
                     if (!visitedMainServerRoom) {
-                        tooltip.addPara("We have found encryption key in this room, possibly for data, that is located in main server room.", POSITIVE, 10f);
-                        tooltip.addPara("Beside that we have not been able to find anything useful there.", INFORMATIVE, 10f);
+                        tooltip.addPara("We have found an encryption key in this room, possibly for the encrypted data that is located in main server room.", POSITIVE, 10f);
+                        tooltip.addPara("Besides that, we haven't found anything useful there.", INFORMATIVE, 10f);
                     } else {
-                        tooltip.addPara("Unfortunate we have found nothing valuable here", NEGATIVE, 10f);
+                        tooltip.addPara("Unfortunately we haven't found anything valuable there.", NEGATIVE, 10f);
                     }
 
                     break;
                 case "bs_fac_op3":
-                    tooltip.addPara("Our investigation of storage room has gifted us with a storage filled with Alpha Class AI cores, that have been transported to local storage.", POSITIVE, 10f);
+                    tooltip.addPara("Our investigation of the storage room has found a storage filled with Alpha Class AI cores, that have been transported to the local storage.", POSITIVE, 10f);
                     if(!gotCores){
                         currentlyAffectedMarket.getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().addCommodity("alpha_core",5);
                         gotCores=true;
@@ -133,15 +133,15 @@ public class ThetaProjectEvent extends AoTDColonyEvent {
                     break;
             }
             if (hasNotExplored()) {
-                tooltip.addPara("For the past month, our dedicated team of scientists has been immersed in the exploration of the enigmatic remnants\n" +
-                        "of research facility.", INFORMATIVE, 10f);
-                tooltip.addPara("While we have meticulously mapped most of the facility, the true treasures within remain uncharted.\n" +
-                        "The time has come for us to make decision – to determine which part of this complex we will venture into first.", INFORMATIVE, 10f);
+                tooltip.addPara("For the past month, dedicated team of our scientists has been immersed in exploration of enigmatic remnants\n" +
+                        "of the research facility.", INFORMATIVE, 10f);
+                tooltip.addPara("While we have meticulously mapped most of the facility, the true treasures within remain unknown.\n" +
+                        "The time has come for us to make a decision - to determine which part of this complex we shall venture into first.", INFORMATIVE, 10f);
             } else {
                 AoTDColonyEvent event = AoTDColonyEventManager.getInstance().getEventById("theta_finding_facility");
                 if (event.prevDecisionId.equals("bs_op1")&&!finishedExplorationSection) {
-                    tooltip.addPara("Unfortunate due to structural integrity damaged caused by our expedition we need to choose one of two remaining " +
-                            "areas of the facility, that can be explored", NEGATIVE, 10f);
+                    tooltip.addPara("Unfortunately due to damage that facility's structural integrity suffered from activity of our expedition team, we have to choose only one of the two remaining " +
+                            "areas of the facility to explore.", NEGATIVE, 10f);
                 }
             }
 
@@ -154,29 +154,29 @@ public class ThetaProjectEvent extends AoTDColonyEvent {
         switch (optionId) {
             case "bs_op1":
                 tooltip.addPara("Lose 100.000 Credits", NEGATIVE, 10f);
-                tooltip.addPara("Our team will be equipped only with necessary tools for this expedition.", INFORMATIVE, 10f);
+                tooltip.addPara("Our team will be equipped only with the tools deemed necessary for this expedition.", INFORMATIVE, 10f);
                 break;
             case "bs_op2":
                 tooltip.addPara("Lose 500.000 Credits", NEGATIVE, 10f);
-                tooltip.addPara("Our expedition will be equipped with state-of-the-art tools for exploration of this facility.", INFORMATIVE, 10f);
+                tooltip.addPara("Our expedition will be equipped with state-of-the-art tools for the purpose of exploring this facility.", INFORMATIVE, 10f);
                 break;
             case "bs_op3":
-                tooltip.addPara("We won't fund this expedition, as this is only waste of resources.", INFORMATIVE, 10f);
+                tooltip.addPara("We won't fund this expedition at all, it's a waste of resources.", INFORMATIVE, 10f);
                 break;
             case "bs_fac_op":
-                tooltip.addPara("We shall continue with exploration further, with hope of getting more information about Project Charon", INFORMATIVE, 10f);
+                tooltip.addPara("We shall continue the exploration, with hope of getting more information about Project Charon.", INFORMATIVE, 10f);
                 break;
             case "bs_fac_op1":
                 tooltip.addPara("We will explore heart of this research facility, in hopes of finding valuable data.", INFORMATIVE, 10f);
                 break;
             case "bs_fac_op2":
-                tooltip.addPara("We will explore office of supposed head of this facility.", INFORMATIVE, 10f);
+                tooltip.addPara("We will explore the office of the supposed director of this facility.", INFORMATIVE, 10f);
                 break;
             case "bs_fac_op3":
-                tooltip.addPara("We will explore and salvage massive storage area", INFORMATIVE, 10f);
+                tooltip.addPara("We will explore and salvage the massive storage area.", INFORMATIVE, 10f);
                 break;
             case "bs_fac_op_finish":
-                tooltip.addPara("There is nothing more we can get there.", INFORMATIVE, 10f);
+                tooltip.addPara("There is nothing more left for us to explore.", INFORMATIVE, 10f);
                 break;
 
         }

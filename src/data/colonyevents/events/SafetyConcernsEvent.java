@@ -21,9 +21,9 @@ public class SafetyConcernsEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("Administrator, a situation of workers on "+currentlyAffectedMarket.getName()+" has only gotten worse. There has been demands to " +
-                "increase safety conditions in our factories, which in return wil reduce productivity of our facilities.We can always ignore those demands, but " +
-                "this will cause unrest amongst population.",10f);
+        tooltip.addPara("Administrator, situation of our workers on "+currentlyAffectedMarket.getName()+" has gotten significantly worse. There have been loud demands to " +
+                "increase safety conditions in our factories, which in return would reduce productivity of our facilities. We could always ignore those demands, but " +
+                "this is ought to cause unrest among the population.",10f);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class SafetyConcernsEvent extends AoTDColonyEvent {
     @Override
     public void showOptionOutcomes(TooltipMakerAPI tooltip, String optionId) {
         if(optionId.equals("qa_op1")){
-            tooltip.addPara("Increase upkeep of all heavy and light industries by 10% for 180 days.", Misc.getNegativeHighlightColor(),10f);
+            tooltip.addPara("Increase upkeep costs of all heavy and light industries by 10% for 180 days.", Misc.getNegativeHighlightColor(),10f);
         }
         else{
             tooltip.addPara("Decrease Stability by 1 for 180 days.", Misc.getNegativeHighlightColor(),10f);

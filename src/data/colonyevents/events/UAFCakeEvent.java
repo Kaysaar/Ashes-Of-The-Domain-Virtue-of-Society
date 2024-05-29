@@ -22,12 +22,12 @@ public class UAFCakeEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("Administrator, we have been contacted by one of famous culinary figure: %s.", 10f, Misc.getTooltipTitleAndLightHighlightColor(),
+        tooltip.addPara("Administrator, we have been contacted by one of famous culinary figures: %s.", 10f, Misc.getTooltipTitleAndLightHighlightColor(),
                 new Color(73, 172, 255), "" + "Aurelio Flambé");
-        tooltip.addPara("Intrigued by the taste of your mysterious freshly baked pastries, never seen before on the market." +
-                "The delegation have sampled \"your\" delectable creations, their eyes lighting up with the promise of money." +
-                "You quickly explain to them that they are in fact not yours but belong to a small faction in the bottom left part of the sector" +
-                "hey give you a contract anyways", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
+        tooltip.addPara("Aurelio is intrigued by the taste of your mysterious freshly baked pastries, that have never been seen before on the market." +
+                "The delegation has sampled \"your\" delectable creations, and their eyes lit up as they realized how much money they could earn from sale of these delicious pastries." +
+                "You quickly try to explain to them that they are in fact not yours, but the recipe belongs to a small faction in the south west of the Persean Sector." +
+                "They gave you a contract regardless.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
     }
 
     @Override
@@ -52,21 +52,21 @@ public class UAFCakeEvent extends AoTDColonyEvent {
     @Override
     public void showOptionOutcomes(TooltipMakerAPI tooltip, String optionId) {
         if (optionId.equals("bd_op1")) {
-            tooltip.addPara("Gain new Bakery industry with high boost to income", Misc.getPositiveHighlightColor(), 10f);
-            tooltip.addPara("Warning! This industry can't be removed", Misc.getNegativeHighlightColor(), 10f);
+            tooltip.addPara("Gain a new Bakery industry which provides high boost to income.", Misc.getPositiveHighlightColor(), 10f);
+            tooltip.addPara("Warning! This industry cannot be removed.", Misc.getNegativeHighlightColor(), 10f);
 
         }
         if (optionId.equals("bd_op2")) {
             tooltip.addPara("Gain 10% accessibility bonus.", Misc.getPositiveHighlightColor(), 10f);
-            tooltip.addPara(currentlyAffectedMarket.getName() + " will recieve special UAF fleet to defend it", Misc.getPositiveHighlightColor(), 10f);
-            tooltip.addPara("Receive blueprint for confectionary industry to " + currentlyAffectedMarket.getName() + " local storage", Misc.getPositiveHighlightColor(), 10f);
+            tooltip.addPara(currentlyAffectedMarket.getName() + " will recieve special UAF fleet to defend it.", Misc.getPositiveHighlightColor(), 10f);
+            tooltip.addPara("Receive blueprint for confectionary industry to " + currentlyAffectedMarket.getName() + "'s local storage", Misc.getPositiveHighlightColor(), 10f);
 
         }
         if (optionId.equals("bd_op3")) {
-            tooltip.addPara("Faction gets unique trait for rest of the game:", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
-            tooltip.addPara("+1 Stability on world's with Bakery", Misc.getPositiveHighlightColor(), 10f);
-            tooltip.addPara("-1 Stability on world's without Bakery", Misc.getNegativeHighlightColor(), 10f);
-            tooltip.addPara("Gain ability to built Bakery industry, but without huge income bonus and with lowered production", Misc.getPositiveHighlightColor(), 10f);
+            tooltip.addPara("Faction gains unique trait for the rest of the game:", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
+            tooltip.addPara("+1 Stability on worlds with Bakery", Misc.getPositiveHighlightColor(), 10f);
+            tooltip.addPara("-1 Stability on worlds without Bakery", Misc.getNegativeHighlightColor(), 10f);
+            tooltip.addPara("Gain the ability to build Bakery industry, but without the huge income bonus, and with lowered production.", Misc.getPositiveHighlightColor(), 10f);
         }
     }
 }

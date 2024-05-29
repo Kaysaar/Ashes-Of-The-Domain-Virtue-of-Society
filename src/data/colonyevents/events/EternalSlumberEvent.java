@@ -20,8 +20,8 @@ public class EternalSlumberEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("One of scavenger teams located on planet "+currentlyAffectedMarket.getName()+" have located an entrance to what seems to be a " +
-                "ancient vault.After close inspection it was determined to be very old Cryosanctum, dating it's construction back to Pre Collapse era." +
+        tooltip.addPara("One of scavenger teams located on "+currentlyAffectedMarket.getName()+" has located an entrance to what seems to be an " +
+                "ancient vault. After closer inspection it was determined to be very old Cryosanctum, it's construction dating all the way back to Pre-Collapse era." +
                 "\nWhat should we do with this discovery?",10f);
 
     }
@@ -29,7 +29,7 @@ public class EternalSlumberEvent extends AoTDColonyEvent {
     @Override
     public void showOptionOutcomes(TooltipMakerAPI tooltip, String optionId) {
        if(optionId.equals("es_op1")){
-           tooltip.addPara("We shall seal entrance to this vault , leaving people here in eternal slumber", Misc.getTooltipTitleAndLightHighlightColor(),10f);
+           tooltip.addPara("We shall seal the entrance to this vault, leaving people here in eternal, peaceful slumber.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
        }
         if(optionId.equals("es_op2")){
             tooltip.addPara("Recieve Cryosanctum structure on "+currentlyAffectedMarket.getName(), Misc.getPositiveHighlightColor(),10f);
@@ -38,7 +38,7 @@ public class EternalSlumberEvent extends AoTDColonyEvent {
         if(optionId.equals("es_op3")){
             tooltip.addPara("Increase population of "+currentlyAffectedMarket.getName()+" by 1.",Misc.getPositiveHighlightColor(),10f);
             tooltip.addPara("Increase food consumption by 3 units for 365 days",Misc.getNegativeHighlightColor(),10f);
-            tooltip.addPara("Decrease colony income by 20% for 365 days",Misc.getNegativeHighlightColor(),10f);
+            tooltip.addPara("Decrease colony's income by 20% for 365 days",Misc.getNegativeHighlightColor(),10f);
         }
     }
 

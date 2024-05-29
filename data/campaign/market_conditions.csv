@@ -1,5 +1,5 @@
 name,id,planetary,decivRemove,script,desc,icon,order
-Tri Tachyon Influence,tt_smaller_investment,false,true,data.colonyevents.conditions.TriTachyonInvestmentApplier,"Local authorities have signed agreement with Tri Tachyon officials to support inital economical growth of economy, in exchange of montly income.",graphics/icons/markets/urbanized_polity.png,1000
+Tri Tachyon Influence,tt_smaller_investment,false,true,data.colonyevents.conditions.TriTachyonInvestmentApplier,"Local authorities have signed an agreement with Tri Tachyon officials to support inital economical growth of the colony economy, in exchange receiving part of the montly income.",graphics/icons/markets/urbanized_polity.png,1000
 AoTD Event Break,fired_event,false,true,data.colonyevents.conditions.BreakFromEventsCondition,,graphics/icons/markets/urbanized_polity.png,1000
 Safety conditions : Good,safety_achieved,false,true,data.colonyevents.conditions.SafetyConditionsApplier,,graphics/icons/markets/urbanized_polity.png,1000
 Safety conditions : Bad,safety_declined,false,true,data.colonyevents.conditions.SafetyConditionsApplier,,graphics/icons/markets/urbanized_polity.png,1000

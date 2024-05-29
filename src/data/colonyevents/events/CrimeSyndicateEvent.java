@@ -25,21 +25,21 @@ public class CrimeSyndicateEvent extends AoTDColonyEvent {
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
         super.generateDescriptionOfEvent(tooltip);
         if(this.spec.getEventId().equals("crime_syndicate_beginning")){
-            tooltip.addPara("Administrator, recent unrest caused by outside events on "+currentlyAffectedMarket.getName()+ "have caused the creation of a massive crime syndicate, across the entire world.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
-            tooltip.addPara("Crime rate has gone rampant , and our police forces can’t contain this massive threat",Misc.getTooltipTitleAndLightHighlightColor(),10f);
-            tooltip.addPara("Currently this world it’s in full disarray.",Misc.getNegativeHighlightColor(),10f);
+            tooltip.addPara("Administrator, recent unrest on "+currentlyAffectedMarket.getName()+ "led to creation of a massive crime syndicate, whose influence spreads across the entire world.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
+            tooltip.addPara("Crime rate has gone rampant and our police forces can't contain this massive threat.",Misc.getTooltipTitleAndLightHighlightColor(),10f);
+            tooltip.addPara("Currently this world is in full disarray.",Misc.getNegativeHighlightColor(),10f);
         }
         if(this.spec.getEventId().equals("crime_syndicate_resolve")&&currentlyAffectedMarket.getStabilityValue()<7){
-            tooltip.addPara("Administrator, recent unrest caused by outside events on "+currentlyAffectedMarket.getName()+ "have caused the creation of a massive crime syndicate, across the entire world.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
-            tooltip.addPara("It has been around few months, we have failed to establish order, in which time crime organization's power grew",Misc.getTooltipTitleAndLightHighlightColor(),10f);
-            tooltip.addPara("Because of this, one of crime lords came here, with proposal",Misc.getTooltipTitleAndLightHighlightColor(),10f);
-            tooltip.addPara("We will allow them to continue their operations unopposed , in return they promise, to bring back order to streets",Misc.getTooltipTitleAndLightHighlightColor(),10f);
-            tooltip.addPara("Alternatively, one of generals proposed to gather elite strike force, to fully eradicate crime syndicate across entire planet, which will cause much more unrest, than currently we have",Misc.getNegativeHighlightColor(),10f);
+            tooltip.addPara("Administrator, recent unrest on "+currentlyAffectedMarket.getName()+ "led to creation of a massive crime syndicate, whose influence spreads across the entire world.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
+            tooltip.addPara("Few months have passed and we have failed to establish order. In this time the crime syndicate kept on amassing power.",Misc.getTooltipTitleAndLightHighlightColor(),10f);
+            tooltip.addPara("Because of this one of crime lords came here, with proposal for us.",Misc.getTooltipTitleAndLightHighlightColor(),10f);
+            tooltip.addPara("We can allow them to continue their operations unopposed, and in return they promise to bring back order to streets.",Misc.getTooltipTitleAndLightHighlightColor(),10f);
+            tooltip.addPara("Alternatively, one of our generals proposed to gather a elite strike force to fully eliminate the crime syndicate, but it will temporaily cause much more unrest as planetwide eradication of the syndicate's hideouts ensues.",Misc.getNegativeHighlightColor(),10f);
 
         }
         if(this.spec.getEventId().equals("crime_syndicate_resolve")&&currentlyAffectedMarket.getStabilityValue()>=7){
-            tooltip.addPara("Administrator, recent unrest caused by outside events on "+currentlyAffectedMarket.getName()+ "have caused the creation of a massive crime syndicate, across the entire world.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
-            tooltip.addPara("It has been around few months, we successfully established back order on this planet, so it can again prosper under justice.",Misc.getPositiveHighlightColor(),10f);
+            tooltip.addPara("Administrator, recent unrest on "+currentlyAffectedMarket.getName()+ "led to creation of a massive crime syndicate, whose influence spreads across the entire world.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
+            tooltip.addPara("Few months have passed and we have successfully reestablished order on this planet. It may once again prosper under justice.",Misc.getPositiveHighlightColor(),10f);
 
         }
     }
@@ -49,24 +49,24 @@ public class CrimeSyndicateEvent extends AoTDColonyEvent {
         super.showOptionOutcomes(tooltip, optionId);
         switch (optionId){
             case "crime_beginning":
-                tooltip.addPara("-3 Stability and -40% accessibility until situation improves",Misc.getNegativeHighlightColor(),10f);
-                tooltip.addPara("We have somewhere around 180 to 250 days to sort situation out!",Misc.getNegativeHighlightColor(),10f);
+                tooltip.addPara("-3 Stability and -40% accessibility until situation improves.",Misc.getNegativeHighlightColor(),10f);
+                tooltip.addPara("We have between 180 to 250 days to deal with rampant crime.",Misc.getNegativeHighlightColor(),10f);
                 break;
             case "crime_syndicate_deal":
                 tooltip.addPara("-1 Stability and -20% accessibility ",Misc.getNegativeHighlightColor(),10f);
-                tooltip.addPara("Gets 1.5x multiplier towards defences",Misc.getPositiveHighlightColor(),10f);
-                tooltip.addPara("Will get around from 10.000 to 40.000 credits monthly, from trade in black market",Misc.getPositiveHighlightColor(),10f);
-                tooltip.addPara("Remove Rampant Crime condition",Misc.getPositiveHighlightColor(),10f);
+                tooltip.addPara("1.5x multiplier towards defences",Misc.getPositiveHighlightColor(),10f);
+                tooltip.addPara("Gain 10.000 to 40.000 credits per month from the black market trade.",Misc.getPositiveHighlightColor(),10f);
+                tooltip.addPara("Remove Rampant Crime condition.",Misc.getPositiveHighlightColor(),10f);
 
                 break;
             case "crime_syndicate_rampage":
-                tooltip.addPara("-5 Stability and -20% accessibility for 600 days",Misc.getNegativeHighlightColor(),10f);
-                tooltip.addPara("Remove Rampant Crime condition",Misc.getPositiveHighlightColor(),10f);
+                tooltip.addPara("-5 Stability and -20% accessibility for 600 days.",Misc.getNegativeHighlightColor(),10f);
+                tooltip.addPara("Remove Rampant Crime condition.",Misc.getPositiveHighlightColor(),10f);
 
                 break;
             case "crime_syndicate_resolved":
-                tooltip.addPara("Permanent +1 stability on market and 5% accessibility bonus",Misc.getPositiveHighlightColor(),10f);
-                tooltip.addPara("Remove Rampant Crime condition",Misc.getPositiveHighlightColor(),10f);
+                tooltip.addPara("Permanent +1 stability on market and 5% accessibility bonus.",Misc.getPositiveHighlightColor(),10f);
+                tooltip.addPara("Remove Rampant Crime condition.",Misc.getPositiveHighlightColor(),10f);
 
                 break;
 
@@ -78,7 +78,7 @@ public class CrimeSyndicateEvent extends AoTDColonyEvent {
         if(this.spec.getEventId().equals("crime_syndicate_resolve")){
             if(this.currentlyAffectedMarket.getStabilityValue()>=7){
                 this.loadedOptions.clear();
-                this.loadedOptions.put("crime_syndicate_resolved","We persisted through this hard time.");
+                this.loadedOptions.put("crime_syndicate_resolved","We have persisted through this crisis.");
             }
         }
     }

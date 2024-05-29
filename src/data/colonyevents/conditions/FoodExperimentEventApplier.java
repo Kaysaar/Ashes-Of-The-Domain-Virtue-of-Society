@@ -12,7 +12,7 @@ public class FoodExperimentEventApplier extends BaseEventCondition {
         super.apply(id);
         if(isToBeRemoved)return;
         if(getModId().contains("food_experiment_flowers")){
-            market.getAccessibilityMod().modifyFlat(foodExperiment,0.20f,"Amusing Flowers");
+            market.getAccessibilityMod().modifyFlat(foodExperiment,0.20f,"Astonishing Flowers");
         }
         if(getModId().contains("food_experiment_tree")){
             float income = market.getGrossIncome();

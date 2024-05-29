@@ -16,16 +16,16 @@ public class UndergroundHiveEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("New geological survey on part of the colony have revealed that a network of cave previously suspected of being of natural origin are in fact breeding ground for a new insect species.", INFORMATIVE, 10f);
-        tooltip.addPara("The dispatched team broke into a wide cavern containing a few thousand eggs measuring each approximatively 1.5m. " +
-                "Before they could secure samples however several warrior-type creature the size of a small " +
-                "combat mech started to attack them. Luckily for us the team was able to evacuate without any " +
-                "human losses and with one of the eggs but now the question remain of what to do with the hive.", INFORMATIVE, 10f);
-        tooltip.addPara("One of the surveyor still amazed by the creature and their robustness suggest that we try to find a way to use them to improve our defence in case of an invasion as their shear size, " +
-                "robustness and scariness could be devastating when unleash upon an unsuspected enemy.", INFORMATIVE, 10f);
-        tooltip.addPara("The secretary of the administrator have suggested purging the warrior-types and try to expend the territory of the creature to produce enough eggs to be exported as luxury " +
-                "food after testing revealed that they are quite edible and actually rather good despite being a little bit chewy.", INFORMATIVE, 10f);
-        tooltip.addPara("Finally one of our warrant officer suggested nuking the site from orbit to remove all traces of this species.", INFORMATIVE, 10f);
+        tooltip.addPara("Geological survey that our colony has conduced has revealed that a network of caves, previously assumed to be natural in origin, is in fact breeding grounds for a previously undiscovered insect species.", INFORMATIVE, 10f);
+        tooltip.addPara("The dispatched team broke into a large cavern containing few thousand eggs, each measuring approximately 1.5m. " +
+                "However, before they could secure samples several creatures that seemed to be the warrior caste of the hive began attacking them. Each of these monstrosities was the size of a small " +
+                "combat mech. Luckily for us the team was able to evacuate without any " +
+                "human losses and with one of the eggs, but now the question of what to do with the hive presents itself.", INFORMATIVE, 10f);
+        tooltip.addPara("One of the surveyors is still amazed by the creatures and their robustness, and suggests that we try and find a way to use them to improve our defences, in case of an ground invasion as their sheer size " +
+                "endurance and terrifying appearance could be devastating on enemy forces when unleashed upon them.", INFORMATIVE, 10f);
+        tooltip.addPara("The secretary has suggested purging the warrior caste and try to extend the territory of the insects to produce enough eggs in order to export them as luxury " +
+                "food, after testing revealed that they are edible and in fact quite delicious, despite being a little bit chewy.", INFORMATIVE, 10f);
+        tooltip.addPara("Finally, one of our warrant officers suggested nuking the site from orbit to remove all traces of these species.", INFORMATIVE, 10f);
     }
 
     @Override
@@ -33,17 +33,17 @@ public class UndergroundHiveEvent extends AoTDColonyEvent {
         switch (optionId) {
             case "hive_op1":
                 tooltip.addPara("Decrease stability by 1.", NEGATIVE, 15f);
-                tooltip.addPara("Increase defence multiplier by 1.25", POSITIVE, 15f);
-                tooltip.addPara("With special pheromones we can control them... most of the time", INFORMATIVE, 15f);
+                tooltip.addPara("Increase ground defence multiplier by 1.25.", POSITIVE, 15f);
+                tooltip.addPara("With special pheromones we can control them... Most of the time.", INFORMATIVE, 15f);
                 break;
             case "hive_op2":
-                tooltip.addPara("We'll make the mother of all omelettes with those !", POSITIVE, 15f);
-                tooltip.addPara("Increase production of luxury goods by 2", POSITIVE, 15f);
-                tooltip.addPara("Increase demand for marines to industries producing luxury goods by 4",NEGATIVE,10f);
+                tooltip.addPara("We'll make the mother of all omelettes with these!", POSITIVE, 15f);
+                tooltip.addPara("Increase production of luxury goods by 2 units.", POSITIVE, 15f);
+                tooltip.addPara("Increase demand for marines for industries producing luxury goods by 4 units.",NEGATIVE,10f);
                 break;
             case "hive_op3":
-                tooltip.addPara("I will not let those things roam freely on my planet, destroy them:\n" +
-                        "It's the only way to be sure", INFORMATIVE, 15f);
+                tooltip.addPara("I will not let those things roam freely on my planet, destroy them in nuclear hellfire:\n" +
+                        "It's the only way to be sure.", INFORMATIVE, 15f);
                 break;
         }
     }

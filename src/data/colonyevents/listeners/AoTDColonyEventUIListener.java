@@ -58,8 +58,8 @@ public class AoTDColonyEventUIListener extends BaseIndustryOptionProvider {
     public void createTooltip(IndustryOptionData opt, TooltipMakerAPI tooltip, float width) {
         super.createTooltip(opt, tooltip, width);
         if(opt.id==MIKOSHI){
-            tooltip.addPara("Soulkiller is advanced procedure, that copies consciousness of specific person into advanced AI core. Due to being very demanding task for person's brain it gots fried once transfer is completed, therefore killing this person.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
-            tooltip.addPara("Warning! This procedure is irreversible once started!",Misc.getNegativeHighlightColor(),10f);
+            tooltip.addPara("Soulkiller is an advanced procedure that copies consciousness of a selected person into a technologically advanced AI core. Due to it being a very invasive procedure subject's brain is guaranteed to be fatally damaged during the procedure, resulting in death once the transfer is complete.", Misc.getTooltipTitleAndLightHighlightColor(),10f);
+            tooltip.addPara("Warning! This procedure is irreversible once its started!",Misc.getNegativeHighlightColor(),10f);
         }
     }
 }

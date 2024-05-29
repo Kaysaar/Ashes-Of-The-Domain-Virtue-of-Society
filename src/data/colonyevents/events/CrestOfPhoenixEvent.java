@@ -38,24 +38,24 @@ public class CrestOfPhoenixEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("Administrator, this has been a long journey. You alone have united scattered sector under your banner", 10f);
-        tooltip.addPara("Most of sector is now under control of " + currentlyAffectedMarket.getFaction().getDisplayName() + ".", 10f);
-        tooltip.addPara("It has been suggested, that this is time: Time to proclaim a new colossus, a torch for entire sector", 10f);
-        tooltip.addPara("Rebirth of Domain of Man", Color.CYAN, 10f);
-        tooltip.addPara("Decision is all yours to take administrator.", 10f);
+        tooltip.addPara("Administrator, this has been a long and perilious journey. You alone have united the scattered sector under your banner", 10f);
+        tooltip.addPara("Most of the Persean Sector is now under control of " + currentlyAffectedMarket.getFaction().getDisplayName() + ".", 10f);
+        tooltip.addPara("Many important voices within our faction say its time; Time to proclaim a new colossus, a torch for the entire sector.", 10f);
+        tooltip.addPara("The Rebirth of Domain of Man.", Color.CYAN, 10f);
+        tooltip.addPara("Decision is all yours to make administrator.", 10f);
     }
 
     @Override
     public void showOptionOutcomes(TooltipMakerAPI tooltip, String optionId) {
         if (optionId.equals("nc_op1")) {
             tooltip.addPara("We wil change name to \"Domain of Man\".",Misc.getTooltipTitleAndLightHighlightColor(),10f);
-            tooltip.addPara("Receive permanent +5 Stability modifier to all your worlds",Misc.getPositiveHighlightColor(),10f);
-            tooltip.addPara("And From Ashes of The Domain, a new Colossus shall rise ",Color.ORANGE,10f);
+            tooltip.addPara("Receive permanent +5 Stability modifier to all of your worlds",Misc.getPositiveHighlightColor(),10f);
+            tooltip.addPara("And From the Ashes of The Domain, a new Colossus shall rise. ",Color.ORANGE,10f);
 
         }
         if (optionId.equals("nc_op2")) {
             tooltip.addPara("Receive permanent +5 Stability modifier to all your worlds",Misc.getPositiveHighlightColor(),10f);
-            tooltip.addPara("Its time to built our own legacy across the stars",Color.ORANGE,10f);
+            tooltip.addPara("Its time to build our own legacy across the stars.",Color.ORANGE,10f);
         }
 
     }

@@ -25,13 +25,13 @@ public class PAGSMFuelHegemonyEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("Administrator , critical situation, we have been contacted by",10f);
-        tooltip.addPara("The Magnanimous, Excellent, Glorious and Auspicious Supreme Chief Overlord President Executive Gas Station Manager Phillip Andrada's Fuel Company",new Color(239, 12, 227, 247),10f);
-        tooltip.addPara("The message reads: We have noticed, that your fuel production have risen quickly in recent years." +
-                "We demand you to lower immediately production of fuel , and excess of it to be delivered to Sindrian Fuel Company." +
-                "In return our glorious company shall protect, and commission you as one of main suppliers, that will serve the glory of",10f);
-        tooltip.addPara("The Magnanimous, Excellent, Glorious and Auspicious Supreme Chief Overlord President Executive Gas Station Manager Phillip Andrada",new Color(239, 12, 227, 247),10f);
-        tooltip.addPara("Should you refuse our generous offer, we shall do so called \"Hostile Takeover\"",10f);
+        tooltip.addPara("Administrator, we have a critical situation on our hands, we have been contacted by",10f);
+        tooltip.addPara("The Magnanimous, Excellent, Glorious and Auspicious Supreme Chief Overlord President Executive Gas Station Manager Phillip Andrada's Fuel Company.",new Color(239, 12, 227, 247),10f);
+        tooltip.addPara("The message reads: We have noticed that your fuel production have risen significantly in the recent years." +
+                "We demand you to immediately lower production of fuel, and deliver excess of it to the Sindrian Fuel Company." +
+                "In return our glorious company shall protect, and commission you as one of our main suppliers, who will serve the glory of",10f);
+        tooltip.addPara("The Magnanimous, Excellent, Glorious and Auspicious Supreme Chief Overlord President Executive Gas Station Manager Phillip Andrada.",new Color(239, 12, 227, 247),10f);
+        tooltip.addPara("But should you refuse our generous offer, we shall be forced to commit a \"Hostile Takeover\".",10f);
     }
 
     @Override

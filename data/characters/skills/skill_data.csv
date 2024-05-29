@@ -1,5 +1,5 @@
 id,name,order,tier,reqPoints,reqPointsPerExtraSkill,description,author,combat officer,admiral,admin,tags,icon,
-fourth_dimensional_sight,4th Dimensional Sight,10001,0,,,"This passage sparks a debate on whether this machine demonstrates genuine human consciousness or is merely an advanced artificial intelligence. Nontheless it understands planes that are beyond human understanding, and that honestly terrifies me.","""Project Cheron Archive 01"" by Anonymous",,,TRUE,"npc_only, ai_core_only",graphics/icons/skills/4thDimensionalSight.png,
+fourth_dimensional_sight,4th Dimensional Sight,10001,0,,,"This sparks a debate on whether this machine demonstrates genuine human consciousness or is merely an advanced artificial intelligence. Nonetheless it understands planes that are far beyond human understanding, and that honestly terrifies me.","""Project Cheron Archive 01"" by Anonymous",,,TRUE,"npc_only, ai_core_only",graphics/icons/skills/4thDimensionalSight.png,
 ,,,,,,,,,,,,,
 ,,,,,,,,,,,,,
 ,,,,,,,,,,,,,

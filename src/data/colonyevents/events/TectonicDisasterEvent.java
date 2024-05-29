@@ -35,19 +35,19 @@ public class TectonicDisasterEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("Administrator, our recent mining operations on "+currentlyAffectedMarket.getName()+" have caused massive damage to already unstable tectonic plates."+
-                "Our team of analysts have deducted the cause of that incident: overuse of Mantle bore."+
-                "If we keep using it more and more the risk of massive earthquakes will increase.",INFORMATIVE,10f);
-        tooltip.addPara("We heavily suggest to fully stop using Mantle Bore.",INFORMATIVE,10f);
+        tooltip.addPara("Administrator, our recent mining operations on "+currentlyAffectedMarket.getName()+" have caused massive damage to the already unstable tectonic plates."+
+                "Our team of analysts has deducted the cause of this incident: overuse of Mantle bore."+
+                "If we continue using it the risk of massive earthquakes will increase.",INFORMATIVE,10f);
+        tooltip.addPara("It's strongly suggested to fully stop using the Mantle Bore.",INFORMATIVE,10f);
     }
 
     @Override
     public void showOptionOutcomes(TooltipMakerAPI tooltip, String optionId) {
-        tooltip.addPara("From now on if Mantle Bore is kept used, every month there is 20% chance of Tectonic Disaster to occur",NEGATIVE,10f);
-        tooltip.addPara("Tectonic Disaster can have such effects : ",INFORMATIVE,10f);
-        tooltip.addPara("5% Chance for -1 market size. WARNING! If market is size 3 when this occurs it destroys colony!",NEGATIVE,10f);
-        tooltip.addPara("60% Chance for mining getting disabled for 365 days.",NEGATIVE,10f);
-        tooltip.addPara("35% Chance for total destruction of mines and removing mining industries from market, including destruction of special items and AI cores.",NEGATIVE,10f);
+        tooltip.addPara("From now on if Mantle Bore is used, every month there is 20% chance that a Tectonic Disaster will occur.",NEGATIVE,10f);
+        tooltip.addPara("Tectonic Disaster can have following effects : ",INFORMATIVE,10f);
+        tooltip.addPara("5% Chance for -1 market size. URGENT! If market is size 3 when this variant of Tectonic Disaster occurs it will destroy the colony!",NEGATIVE,10f);
+        tooltip.addPara("60% Chance for mining disruption for 365 days.",NEGATIVE,10f);
+        tooltip.addPara("35% Chance for total destruction of the mines and removing mining industry from market, destroying special items and AI cores that were in use in process.",NEGATIVE,10f);
     }
 
     @Override

@@ -29,15 +29,15 @@ public class OvergrownEmbryo extends AoTDColonyEvent {
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
         super.generateDescriptionOfEvent(tooltip);
         if (this.spec.getEventId().equals("biofactory_detection")) {
-            tooltip.addPara("A Biofactory Embryo installed at " + currentlyAffectedMarket.getName() + " has started spreading an unknown -- by the words of the Engineers, Guards, anyone who works there, really -- Red, Fungi-like growth.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
-            tooltip.addPara("It's not exactly clear what this \"Life Spread\" is at first glance, any and all Domain-grade tech operates on laws and principles unknown to the sector at large, and, considering most records are long gone, too, you probably won't find anything about it.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
-            tooltip.addPara("Perhaps, an intentional behaviour, perhaps, a not-so-funny one-off joke by a long-dead domain Bio-expert, or worse, a critical gen-coded failsafe failure.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
-            tooltip.addPara("Any and all lifeforms in proximity of the Facility show weak but alarming signs of being drugged, as if, weirdly, by combat stims widely used by marine corps across the Sector.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
-            tooltip.addPara("It however, will probably be worse in no time.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
+            tooltip.addPara("A Biofactory Embryo installed at " + currentlyAffectedMarket.getName() + " has started spreading an unknown - according to testimonies of the Engineers, Guards and pretty much anyone who works at this facility - Red, Fungi-like growth.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
+            tooltip.addPara("It's not exactly clear what this \"Life Spread\" is about at the first glance, after all the Domain era tech operates on laws and principles mostly forgotten to the sector at large, and considering that the most of the records are long gone you probably won't find anything to shed some light on it.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
+            tooltip.addPara("Perhaps it's intentional behaviour, perhaps it's just a not-so-funny one-off joke by a long-dead domain Bio-engineer, or worse, a gene-coded failsafe failure.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
+            tooltip.addPara("On top of that, all lifeforms in proximity of the Facility have trace amounts of drugs in their blood, composition of which is surprisingly similar to combat stims widely used by the marines all across the Sector.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
+            tooltip.addPara("However, there is no doubt that it will get worse if we won't do anything about it.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
 
-            tooltip.addPara("These news, somehow, broke out into public already, in turn falling into Tri-Tachyon's hands. Your Second-In-Command reports that their private party of bio-engineers from Eochu Bres are offering quite modest help, for money, of course.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
-            tooltip.addPara("Your crew loudly voices doubts and concerns that anyone in the Persean knows what the hell that thing in a jar is doing, and that those, as your bridge CO names them, \"egg-heads\", are merely scamming you.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
-            tooltip.addPara("One thing is clear, we must do something about this Fungi urgently, whatever it's doing, will not take too long to spread beyond control...", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
+            tooltip.addPara("Unfortunately these news already have broken out into the public, in turn falling into hands of Tri-Tachyon. Your Second-In-Command reports that their private party of bio-engineers from Eochu Bres is offering help with our unusual problem, for money of course.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
+            tooltip.addPara("Your crew loudly voices doubts and concerns that anyone in the Persean would know what the hell is the embryo doing, and those as your bridge CO calls them, \"eggheads\", are only trying to scam you.", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
+            tooltip.addPara("One thing is clear, we must do something about this Fungi right now, at the rate it' s spreading it will not take long for it to spread beyond control...", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
 
 
         }
@@ -49,14 +49,14 @@ public class OvergrownEmbryo extends AoTDColonyEvent {
         super.showOptionOutcomes(tooltip, optionId);
         switch (optionId) {
             case "biofactory_tri_tachyon":
-                tooltip.addPara("Loose %s credits", 10f, Misc.getNegativeHighlightColor(), Misc.getDGSCredits(100000));
-                tooltip.addPara("Biofactory will be taken for %s months to Tri Tachyon, for investigation.", 10f, Misc.getNegativeHighlightColor(), "2-3");
+                tooltip.addPara("Lose %s credits", 10f, Misc.getNegativeHighlightColor(), Misc.getDGSCredits(100000));
+                tooltip.addPara("Biofactory will be taken for %s months to Tri Tachyon research facilities, for investigation.", 10f, Misc.getNegativeHighlightColor(), "2-3");
                 break;
             case "biofactory_integration":
                 tooltip.addPara("Whatever it's doing, it's probably intentional. The Domain wasn't built by idiots, after all!", Misc.getTooltipTitleAndLightHighlightColor(), 10f);
                 break;
             case "biofactory_our_depo":
-                tooltip.addPara("Issue new special project: Rouge Biofactory", Misc.getPositiveHighlightColor(), 10f);
+                tooltip.addPara("Issue a new special project: Rogue Biofactory", Misc.getPositiveHighlightColor(), 10f);
                 break;
 
         }

@@ -13,8 +13,8 @@ public class ArchimedesUsageEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("Administrator, Archimedes supercomputer located on "+currentlyAffectedMarket.getName()+" have served it's purpose.",INFORMATIVE,10f);
-        tooltip.addPara("There are suggestions about dismantling it, or use it to boost our research project's with it's immense calculating power.",INFORMATIVE,10f);
+        tooltip.addPara("The administrative supercomputer called 'Archimedes', located on "+currentlyAffectedMarket.getName()+" has served it's purpose.",INFORMATIVE,10f);
+        tooltip.addPara("Your scientists  are suggesting to either dismantle it, or use its powerful computing power to boost our progress on the currently active research project.",INFORMATIVE,10f);
     }
 
     @Override
@@ -24,8 +24,8 @@ public class ArchimedesUsageEvent extends AoTDColonyEvent {
             tooltip.addPara("Gain 500.000 Credits of refund.",POSITIVE,10f);
         }
         else{
-            tooltip.addPara("Repurpose Archimedes to help our research endeavours, giving 50% bonus to research speed.",POSITIVE,10f);
-            tooltip.addPara("Gain ability to built Archimedes SQC",POSITIVE,10f);
+            tooltip.addPara("Repurpose Archimedes to help with our research endeavours, granting 50% bonus to research speed.",POSITIVE,10f);
+            tooltip.addPara("Gain the ability to built Archimedes SQC",POSITIVE,10f);
         }
     }
 

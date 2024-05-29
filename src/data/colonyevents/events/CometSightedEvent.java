@@ -32,8 +32,8 @@ public class CometSightedEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("People are always superstitious, and the apperance of a comet in the sky has caused panic among our people. " +
-                "They are convinced that this is sign that the end of times is near or that something bad is going to happen in the near future.", Color.ORANGE,10f);
+        tooltip.addPara("Humans were always superstitious, and the apperance of a particularly bright comet in the sky has caused panic among our people. " +
+                "Many are convinced that this is sign that the end times are upon us or that some sort of a disaster is going to happen in the near future.", Color.ORANGE,10f);
 
    }
 
@@ -44,7 +44,7 @@ public class CometSightedEvent extends AoTDColonyEvent {
 
     @Override
     public void showOptionOutcomes(TooltipMakerAPI tooltip, String optionId) {
-        tooltip.addPara("Something VERY BAD will happen", Misc.getNegativeHighlightColor(),10f);
+        tooltip.addPara("This cannot mean anything good...", Misc.getNegativeHighlightColor(),10f);
     }
 
     @Override

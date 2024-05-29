@@ -82,7 +82,7 @@ public class AoTDColonyEventManager {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-        logger.info("Accomplished reading fully CSV");
+        logger.info("Accomplished fully reading CSV");
         for (int i = 0; i < eventCsvFromMod.length(); i++) {
             boolean skip = false;
             JSONObject item = null;

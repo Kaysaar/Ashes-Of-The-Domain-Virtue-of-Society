@@ -37,18 +37,18 @@ public class HarvestOfYearEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("Administrator, our reports from "+currentlyAffectedMarket.getName()+ " indicate, that recent harvest of food has never been that great.Amount of food that was collected is nearly enough to feed planet for few years." +
-                "Some people suggest using that surplus, to make feast for entire planet, which would boost everyone's morale, others suggest selling that for huge profits. What are you going to do administrator?", INFORMATIVE,10f);
+        tooltip.addPara("Administrator, our reports from "+currentlyAffectedMarket.getName()+ " indicate that the most recent harvest of food is one of the greatest they ever had! The amount of food that was collected is nearly enough to keep the planet fed planet for few next years." +
+                "Some of our advisors suggest using that surplus to host a feast for the entire planet, which would boost people's morale, while others suggest selling that for huge profits. What are you going to do administrator?", INFORMATIVE,10f);
     }
 
     @Override
     public void showOptionOutcomes(TooltipMakerAPI tooltip, String optionId) {
         if(optionId.equals("harvest_of_year_op1")){
-            tooltip.addPara("+1 To production to all industries for 365 days",POSITIVE,10f);
-            tooltip.addPara("+1 To stability for 365 days",POSITIVE,10f);
+            tooltip.addPara("All industries produce 1 more units for 365 days.",POSITIVE,10f);
+            tooltip.addPara("+1 To stability for 365 days.",POSITIVE,10f);
         }
         else{
-            tooltip.addPara("Add 200000 Credits to account",POSITIVE,10f);
+            tooltip.addPara("Gain 200.000 Credits.",POSITIVE,10f);
         }
     }
 

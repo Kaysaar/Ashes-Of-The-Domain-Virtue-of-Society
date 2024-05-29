@@ -35,18 +35,18 @@ public class MassiveStrikesEvent extends AoTDColonyEvent {
     @Override
     public void showOptionOutcomes(TooltipMakerAPI tooltip, String optionId) {
         if (optionId.equals("ms_warning")) {
-            tooltip.addPara("We should increase stability of " + currentlyAffectedMarket.getName() + " as fast as possible to level greater than 5!", NEGATIVE, 10f);
+            tooltip.addPara("We should increase the stability of " + currentlyAffectedMarket.getName() + " as fast as possible to level greater than 5!", NEGATIVE, 10f);
         }
         if (optionId.equals("ms_strike")) {
-            tooltip.addPara("We should increase stability of " + currentlyAffectedMarket.getName() + " as fast as possible to level greater than 5!", NEGATIVE, 10f);
+            tooltip.addPara("We should increase the stability of " + currentlyAffectedMarket.getName() + " as fast as possible to level greater than 5!", NEGATIVE, 10f);
         }
         if (optionId.contains("ms_demand")) {
             switch (optionId) {
                 case "ms_demand_op1":
-                    tooltip.addPara("We will do everything in our power to help our people", INFORMATIVE, 10f);
+                    tooltip.addPara("We will do everything in our power to help our people.", INFORMATIVE, 10f);
                     generateDemand(false);
                     if (currentDemandNotHarsh.amountOfCashToPay != 0) {
-                        tooltip.addPara("We need to pay " + currentDemandNotHarsh.amountOfCashToPay + " to stabilize situation", NEGATIVE, 10f);
+                        tooltip.addPara("We need to pay " + currentDemandNotHarsh.amountOfCashToPay + " credits to stabilize situation", NEGATIVE, 10f);
                     }
                     if (!currentDemandNotHarsh.industriesToEffect.isEmpty()) {
                         for (String s : currentDemandNotHarsh.industriesToEffect) {
@@ -55,13 +55,13 @@ public class MassiveStrikesEvent extends AoTDColonyEvent {
                     }
                     break;
                 case "ms_demand_op2":
-                    tooltip.addPara("We understand what people are going through, but we must endure.", INFORMATIVE, 10f);
+                    tooltip.addPara("We understand what the people are going through, but we must endure.", INFORMATIVE, 10f);
                     break;
                 case "ms_demand_op3":
-                    tooltip.addPara("Silence them, and make them go back to work. Ungrateful pigs", INFORMATIVE, 10f);
+                    tooltip.addPara("Silence them and make them get back to work. Ungrateful pigs.", INFORMATIVE, 10f);
                     generateDemand(true);
-                    tooltip.addPara("Reduce stability by " + currentDemandHarsh.stabilityPenalty+"for 90 days", NEGATIVE, 10f);
-                    tooltip.addPara("Add " + currentDemandHarsh.defencePenalty + " multiplier to defence forces for 90 days", NEGATIVE, 10f);
+                    tooltip.addPara("Reduce stability by " + currentDemandHarsh.stabilityPenalty+" for 90 days", NEGATIVE, 10f);
+                    tooltip.addPara("Add " + currentDemandHarsh.defencePenalty + " multiplier to ground defence strength for 90 days", NEGATIVE, 10f);
                     break;
                 case "ms_demand_op_final":
                     int got = (int) currentlyAffectedMarket.getMemory().get("$aotd_strike_counter");

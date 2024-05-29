@@ -5,11 +5,11 @@ id,trigger,conditions,script,text,options,notes
 theta_fac,OpenInteractionDialog,$aotd_quest_theta score:1000,"FireBest DissablePreCollapseFacilityWhenNeeded 
 SalvageGenFromSeed
 ShowDefaultVisual
-FireBest SalvageCheckHostile","Captain, we have arrived at our destination. According to those coordinates we are now at the main facility, where Project Cheron was conducted. We will be descending our shuttles soon,",6:theta_explore:Venture into Facility,
+FireBest SalvageCheckHostile","Captain, we have arrived at our destination. According to these coordinates we are now at the main testing facility where Project Cheron was conducted. We will be descending into the research complex soon.",6:theta_explore:Venture into Facility,
 ,,,,,,
 ,,,,,,
-theta_explore,TriggerAutomatedDefenses,$aotd_quest_theta score:1000,SalvageDefenderInteraction,"As your fleet moves in closer, sensors detect multiple contacts rising up from the depths of the planet. Their design does not match any ship from our Tripad",,
-theta_continiueAfterDefeating,BeatDefendersContinue,$aotd_quest_theta score:1000,,"Now, that defenders has been defeated  our path to facility is cleared",0:salBeatDefendersContinue:Continue,
+theta_explore,TriggerAutomatedDefenses,$aotd_quest_theta score:1000,SalvageDefenderInteraction,"As your fleet moves in closer, sensors detect multiple contacts rising up from the depths of the planet. Their design does not match any of the designs registered in your Tripad database.",,
+theta_continiueAfterDefeating,BeatDefendersContinue,$aotd_quest_theta score:1000,,"Now that defenders have been defeated, the path to facility is clear and ready to be explored.",0:salBeatDefendersContinue:Continue,
 theta_beatDefenders,BeginSalvage,$aotd_quest_theta score:1000,SetShortcut defaultLeave ESCAPE,,"0:explore_theta:Send a salvage team down to the facility
 100:defaultLeave:Leave",
 explore_theta,DialogOptionSelected,$option == explore_theta,SetShortcut defaultLeave ESCAPE,,0:thetaSalvage:Pick through the salvage,

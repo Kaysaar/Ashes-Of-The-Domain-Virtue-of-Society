@@ -2,6 +2,7 @@ package data.plugins;
 
 import com.fs.starfarer.api.PluginPick;
 import com.fs.starfarer.api.campaign.AICoreAdminPlugin;
+import com.fs.starfarer.api.campaign.AICoreOfficerPlugin;
 import com.fs.starfarer.api.campaign.BaseCampaignPlugin;
 import data.campaign.econ.plugins.ThetaCoreAdmin;
 
@@ -13,6 +14,11 @@ public class ThetaCoreCampaignImpl extends BaseCampaignPlugin {
         }
 
         return null;
+    }
+
+    @Override
+    public PluginPick<AICoreOfficerPlugin> pickAICoreOfficerPlugin(String commodityId) {
+        return super.pickAICoreOfficerPlugin(commodityId);
     }
 
     @Override

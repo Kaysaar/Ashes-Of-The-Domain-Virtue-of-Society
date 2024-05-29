@@ -1,6 +1,7 @@
 package data.colonyevents.conditions;
 
 import com.fs.starfarer.api.campaign.econ.Industry;
+import com.fs.starfarer.api.impl.campaign.ids.Industries;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.colonyevents.models.BaseEventCondition;
 
@@ -34,11 +35,17 @@ public class SafetyConditionsApplier extends BaseEventCondition {
         market.getStability().unmodifyFlat("safety");
 
     }
-
+    @Override
+    public void advance(float amount) {
+        super.advance(amount);
+        market.getStability().unmodifyFlat("organs");
+        market.getIndustry(Industries.POPULATION).getUpkeep().unmodifyFlat("organs");
+        removeWhenPassCertainTime(daysThatModifierlast);
+    }
     @Override
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
         super.createTooltipAfterDescription(tooltip, expanded);
-        removeWhenPassCertainTime(daysThatModifierlast);
+;
     }
 
 }

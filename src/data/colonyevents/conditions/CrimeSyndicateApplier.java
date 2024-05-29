@@ -11,7 +11,7 @@ import org.lazywizard.lazylib.MathUtils;
 import java.awt.*;
 
 public class CrimeSyndicateApplier extends BaseEventCondition implements EconomyTickListener {
-    public float maxDaysOnMarket = 600f;
+    public float maxDaysOnMarket = 350f;
     @Override
     public void apply(String id) {
         super.apply(id);
@@ -35,6 +35,11 @@ public class CrimeSyndicateApplier extends BaseEventCondition implements Economy
             market.getStability().modifyFlat("crime_vanished",+1,"Justice prevails");
             market.getAccessibilityMod().modifyFlat("crime_vanished",0.05f,"Justice prevails");
         }
+    }
+
+    @Override
+    public boolean showIcon() {
+        return true;
     }
 
     @Override
@@ -70,12 +75,13 @@ public class CrimeSyndicateApplier extends BaseEventCondition implements Economy
         }
         if(condition.getId().equals("crime_syndicate_resolve_deal")){
             tooltip.addPara("%s stability, %s accessibility and %s ground defense strength multiplier ",10f, Misc.getNegativeHighlightColor(),"-1","-40%","1.5");
-
+            tooltip.addPara("%s - %s credits per month from black market trade",10f, Color.ORANGE,Misc.getDGSCredits(10000),Misc.getDGSCredits(40000));
         }
         if(condition.getId().equals("crime_syndicate_resolve_violence")){
-            tooltip.addPara("%s stability, %s accessibility and %s ground defense strength multiplier ",10f, Misc.getNegativeHighlightColor(),"-1","-40%","1.5");
-            tooltip.addPara("%s - %s credits per month from black market trade",10f, Color.ORANGE,Misc.getDGSCredits(10000),Misc.getDGSCredits(40000));
-
+            tooltip.addPara("%s stability, %s accessibility and %s ground defense strength multiplier ",10f, Misc.getNegativeHighlightColor(),"-5","-40%","1.5");
+            int days = (int)(maxDaysOnMarket-timeSincePlaced);
+            String daysString = Misc.getStringForDays(days);
+            tooltip.addPara("%s "+"left till modifier removed ",5f,Color.ORANGE,""+(daysString));
 
         }
         if(condition.getId().equals("crime_syndicate_stabilize")){

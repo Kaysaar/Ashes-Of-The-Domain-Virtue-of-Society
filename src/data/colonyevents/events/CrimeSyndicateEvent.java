@@ -60,7 +60,7 @@ public class CrimeSyndicateEvent extends AoTDColonyEvent {
 
                 break;
             case "crime_syndicate_rampage":
-                tooltip.addPara("-5 Stability and -20% accessibility for 600 days.",Misc.getNegativeHighlightColor(),10f);
+                tooltip.addPara("-5 Stability and -20% accessibility for 350 days.",Misc.getNegativeHighlightColor(),10f);
                 tooltip.addPara("Remove Rampant Crime condition.",Misc.getPositiveHighlightColor(),10f);
 
                 break;

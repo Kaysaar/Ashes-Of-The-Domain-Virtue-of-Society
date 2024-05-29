@@ -7,6 +7,7 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.ids.Items;
+import com.fs.starfarer.api.impl.campaign.ids.Submarkets;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.ui.P;
@@ -43,6 +44,7 @@ public class TectonicDisasterEvent extends AoTDColonyEvent {
 
     @Override
     public void showOptionOutcomes(TooltipMakerAPI tooltip, String optionId) {
+        tooltip.addPara("Removes Mantle Bores from all mining industries.",INFORMATIVE,10f);
         tooltip.addPara("From now on if Mantle Bore is used, every month there is 20% chance that a Tectonic Disaster will occur.",NEGATIVE,10f);
         tooltip.addPara("Tectonic Disaster can have following effects : ",INFORMATIVE,10f);
         tooltip.addPara("5% Chance for -1 market size. URGENT! If market is size 3 when this variant of Tectonic Disaster occurs it will destroy the colony!",NEGATIVE,10f);
@@ -54,6 +56,15 @@ public class TectonicDisasterEvent extends AoTDColonyEvent {
     public void executeDecision(String currentDecision) {
         if(!currentlyAffectedMarket.hasCondition("tectonic_destabilization")){
             currentlyAffectedMarket.addCondition("tectonic_destabilization");
+            for (Industry industry : currentlyAffectedMarket.getIndustries()) {
+                if(industry.getSpec().hasTag("mining")){
+                    SpecialItemData specialItemData =  industry.getSpecialItem();
+                    if(specialItemData!=null&&specialItemData.getId().equals(Items.MANTLE_BORE)){
+                        currentlyAffectedMarket.getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().addSpecial(specialItemData,1);
+                        industry.setSpecialItem(null);
+                    }
+                }
+            }
         }
         super.executeDecision(currentDecision);
     }

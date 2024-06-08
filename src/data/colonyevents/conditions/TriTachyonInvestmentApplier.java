@@ -22,7 +22,6 @@ public class TriTachyonInvestmentApplier extends BaseEventCondition {
     public void unapply(String id) {
         super.unapply(id);
         market.getIndustry(Industries.POPULATION).getUpkeep().unmodifyFlat("tri_tachyon_mendling");
-        removeWhenPassCertainTime(maxDaysOnMarket);
     }
 
     @Override
@@ -35,6 +34,7 @@ public class TriTachyonInvestmentApplier extends BaseEventCondition {
     @Override
     public void advance(float amount) {
         super.advance(amount);
+        removeWhenPassCertainTime(maxDaysOnMarket);
     }
     @Override
     public boolean showIcon() {

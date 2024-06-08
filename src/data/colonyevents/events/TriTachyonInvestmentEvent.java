@@ -21,7 +21,7 @@ public class TriTachyonInvestmentEvent extends AoTDColonyEvent {
                 }
             }
         }
-        return goodRelations && occur && marketAPI.isFreePort() && !marketAPI.hasIndustry("tt_hq") && !marketAPI.getMemory().is("$aotd_declined_TT_offer", true);
+        return goodRelations && occur && marketAPI.isFreePort() && !marketAPI.hasIndustry("tt_hq")&& !marketAPI.hasCondition("tt_smaller_investment") && !marketAPI.getMemory().is("$aotd_declined_TT_offer", true)&&super.canOccur(marketAPI);
     }
 
     @Override

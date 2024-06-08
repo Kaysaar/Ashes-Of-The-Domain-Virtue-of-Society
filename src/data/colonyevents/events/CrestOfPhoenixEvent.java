@@ -38,7 +38,7 @@ public class CrestOfPhoenixEvent extends AoTDColonyEvent {
 
     @Override
     public void generateDescriptionOfEvent(TooltipMakerAPI tooltip) {
-        tooltip.addPara("Administrator, this has been a long and perilious journey. You alone have united the scattered sector under your banner", 10f);
+        tooltip.addPara("Administrator, this has been a long and perilous journey. You alone have united the scattered sector under your banner", 10f);
         tooltip.addPara("Most of the Persean Sector is now under control of " + currentlyAffectedMarket.getFaction().getDisplayName() + ".", 10f);
         tooltip.addPara("Many important voices within our faction say its time; Time to proclaim a new colossus, a torch for the entire sector.", 10f);
         tooltip.addPara("The Rebirth of Domain of Man.", Color.CYAN, 10f);

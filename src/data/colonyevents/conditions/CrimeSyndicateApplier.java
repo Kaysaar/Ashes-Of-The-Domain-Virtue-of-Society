@@ -1,8 +1,11 @@
 package data.colonyevents.conditions;
 
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.econ.MonthlyReport;
 import com.fs.starfarer.api.campaign.listeners.EconomyTickListener;
+import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.impl.campaign.shared.SharedData;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.colonyevents.models.BaseEventCondition;
@@ -102,7 +105,33 @@ public class CrimeSyndicateApplier extends BaseEventCondition implements Economy
 
     @Override
     public void reportEconomyTick(int iterIndex) {
+        float numIter = Global.getSettings().getFloat("economyIterPerMonth");
+        float f = 1f / numIter;
 
+        //CampaignFleetAPI playerFleet = Global.getSector().getPlayerFleet();
+        MonthlyReport report = SharedData.getData().getCurrentReport();
+
+        MonthlyReport.FDNode marketsNode = SharedData.getData().getCurrentReport().getColoniesNode();
+
+        float stipend = MathUtils.getRandomNumberInRange(10000,40000);
+        MonthlyReport.FDNode stipendNode = report.getNode(marketsNode, "node_id_crime_syndicate" + market.getId());
+        stipendNode.income += stipend * f;
+
+        if (stipendNode.name == null) {
+            stipendNode.name = "Crime syndicate : " + market.getName();
+            stipendNode.icon = Global.getSector().getFaction(Factions.PIRATES).getCrest();
+            stipendNode.tooltipCreator = new TooltipMakerAPI.TooltipCreator() {
+                public boolean isTooltipExpandable(Object tooltipParam) {
+                    return false;
+                }
+                public float getTooltipWidth(Object tooltipParam) {
+                    return 450;
+                }
+                public void createTooltip(TooltipMakerAPI tooltip, boolean expanded, Object tooltipParam) {
+                    tooltip.addPara("Your monthly cut from black market trading", 0f);
+                }
+            };
+        }
     }
 
     @Override

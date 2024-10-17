@@ -17,7 +17,7 @@ public class HarvestOfYearEvent extends AoTDColonyEvent {
             }
 
         }
-      return hasTag&&super.canOccur(marketAPI);
+      return false;
     }
 
     @Override

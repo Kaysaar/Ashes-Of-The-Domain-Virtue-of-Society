@@ -107,6 +107,6 @@ public class CrimeSyndicateApplier extends BaseEventCondition implements Economy
 
     @Override
     public void reportEconomyMonthEnd() {
-        Global.getSector().getPlayerFleet().getCargo().getCredits().add(MathUtils.getRandomNumberInRange(10000,40000));
+
     }
 }

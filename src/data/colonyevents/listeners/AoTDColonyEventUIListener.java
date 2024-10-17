@@ -46,7 +46,7 @@ public class AoTDColonyEventUIListener extends BaseIndustryOptionProvider {
     public void optionSelected(IndustryOptionData opt, DialogCreatorUI ui) {
 
         if( opt.id == EVENT_AOTD){
-          ui.showDialog(null,new AoTDColonyEventOutomeDP());
+          ui.showDialog(null,new AoTDColonyEventOutomeDP(null));
         }
         if(opt.id==MIKOSHI){
             CustomDialogDelegate delegate = new MikoshiUI((MikoshiFacility) opt.ind.getMarket().getIndustry("cheron"));

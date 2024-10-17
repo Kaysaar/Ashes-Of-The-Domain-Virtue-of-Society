@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.campaign.InteractionDialogPlugin;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.combat.EngagementResultAPI;
+import com.fs.starfarer.api.ui.IntelUIAPI;
 import data.colonyevents.models.AoTDColonyEvent;
 
 import java.util.Map;
@@ -12,10 +13,13 @@ import java.util.Map;
 public class AoTDColonyEventOutomeDP implements InteractionDialogPlugin {
     public InteractionDialogAPI dialog;
     public AoTDColonyEvent event;
-
+    public IntelUIAPI ui;
     static enum OptionID {
         INIT,
         LEAVE
+    }
+    public AoTDColonyEventOutomeDP(IntelUIAPI ui){
+        this.ui = ui;
     }
 
     @Override
@@ -37,7 +41,7 @@ public class AoTDColonyEventOutomeDP implements InteractionDialogPlugin {
     public void optionSelected(String optionText, Object optionData) {
         if (optionData == OptionID.INIT) {
             //this is where the size of the panel is set, automatically centered
-            dialog.showCustomVisualDialog(AoTDColonyEventOutcomeUI.WIDTH + 21, AoTDColonyEventOutcomeUI.HEIGHT + 21, new AoTDColonyEventOutcomeDelegate(new AoTDColonyEventOutcomeUI(),dialog));
+            dialog.showCustomVisualDialog(AoTDColonyEventOutcomeUI.WIDTH + 21, AoTDColonyEventOutcomeUI.HEIGHT + 21, new AoTDColonyEventOutcomeDelegate(new AoTDColonyEventOutcomeUI(ui),dialog));
 
         }
     }

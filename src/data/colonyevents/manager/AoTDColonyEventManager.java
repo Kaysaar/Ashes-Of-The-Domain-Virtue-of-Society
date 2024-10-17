@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.comm.CommMessageAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.intel.BaseIntelPlugin;
+import com.fs.starfarer.api.impl.campaign.intel.EventHandlerIntel;
 import com.fs.starfarer.api.impl.campaign.intel.MessageIntel;
 import com.fs.starfarer.api.util.Misc;
 import data.colonyevents.models.AoTDColonyEvent;
@@ -32,7 +33,7 @@ public class AoTDColonyEventManager {
     public static final String onGoingEventMemKey = "$ongoingEvent";
     public static final int intervalMin = 30;
     public static final int intervalMax = 45;
-    public static final float maxTimeToMakeDecision = 7;
+    public static final float maxTimeToMakeDecision = 3;
     public static final String lastEventMemKey = "$lastEvent";
     public float lastEvent = 0;
     @NotNull
@@ -178,7 +179,7 @@ public class AoTDColonyEventManager {
         if (onGoingEvent != null && onGoingEvent.isWaitingForDecision) {
             onGoingEvent.daysToMakeDecision -= Global.getSector().getClock().convertToDays(ammount);
             if (onGoingEvent.daysToMakeDecision <= 0) {
-                Global.getSector().getCampaignUI().showInteractionDialog(new AoTDColonyEventOutomeDP(), null);
+                Global.getSector().getCampaignUI().showInteractionDialog(new AoTDColonyEventOutomeDP(null), null);
                 logger.info("Event Ended VOS ");
             }
 
@@ -191,10 +192,12 @@ public class AoTDColonyEventManager {
 
             if (event != null&& checkForMarketExistence(event)) {
                 onGoingEvent = event;
-                onGoingEvent.daysToMakeDecision = 7;
-                lastEvent = intervalMin - 7;
+                onGoingEvent.daysToMakeDecision = 3;
+                lastEvent = intervalMin - 5;
                 logger.info("We have assigned event " + onGoingEvent.getSpec().getName());
-                Global.getSector().getCampaignUI().showInteractionDialog(new AoTDColonyEventOutomeDP(), null);
+                EventHandlerIntel intel = new EventHandlerIntel(onGoingEvent.currentlyAffectedMarket);
+                intel.setImportant(true);
+                Global.getSector().getIntelManager().addIntel(intel, false);
                 return;
             }
         }
@@ -212,14 +215,13 @@ public class AoTDColonyEventManager {
                     AoTDColonyEvent event = pickEvent(currentMarketWithEvent);
                     if (event != null) {
                         onGoingEvent = event;
-                        onGoingEvent.daysToMakeDecision = 7;
+                        onGoingEvent.daysToMakeDecision = 3;
                         lastEvent = 0;
                         logger.info("We have assigned event " + onGoingEvent.getSpec().getName());
-                        MessageIntel intel = new MessageIntel("Administrator, there has been major event occuring on  " + onGoingEvent.currentlyAffectedMarket.getName(), Misc.getBasePlayerColor());
-                        intel.setIcon(Global.getSector().getPlayerFaction().getCrest());
-                        intel.setSound(BaseIntelPlugin.getSoundMajorPosting());
+                        EventHandlerIntel intel = new EventHandlerIntel(onGoingEvent.currentlyAffectedMarket);
                         intel.setImportant(true);
-                        Global.getSector().getCampaignUI().addMessage(intel, CommMessageAPI.MessageClickAction.NOTHING);
+                        Global.getSector().getIntelManager().addIntel(intel, false);
+
                     }
                 }
                 lastEvent = 0;
@@ -246,7 +248,7 @@ public class AoTDColonyEventManager {
                 break;
             }
         }
-//        for (AoTDColonyEvent event : events) {
+//        for (AoTDColonyEvent event : events) {sh
 //            if (event.getSpec().getEventId().equals(onGoingEvent.getSpec().getEventId())) {
 //                event = eventUpdated;
 //

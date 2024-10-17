@@ -13,7 +13,7 @@ public class CrimeSyndicateEvent extends AoTDColonyEvent {
     @Override
     public boolean canOccur(MarketAPI marketAPI) {
         if(this.getSpec().getEventId().equals("crime_syndicate_beginning")){
-            return super.canOccur(marketAPI)&&!haveCrimeSyndicateCondition(marketAPI)&&!marketAPI.getMemory().contains("$aotd_had_crime_event")&&marketAPI.getPrevStability()<=2;
+            return super.canOccur(marketAPI)&&marketAPI.getSize()>=4&&!haveCrimeSyndicateCondition(marketAPI)&&!marketAPI.getMemory().contains("$aotd_had_crime_event")&&marketAPI.getPrevStability()<=2;
         }
         return false;
     }

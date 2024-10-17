@@ -4,10 +4,12 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.input.InputEventAPI;
 import com.fs.starfarer.api.ui.*;
+import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import data.colonyevents.models.AoTDColonyEvent;
 import data.colonyevents.manager.AoTDColonyEventManager;
 import org.apache.log4j.Logger;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
@@ -16,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
-    public static final float WIDTH = 900;
-    public static final float HEIGHT = 700;
+    public static  float WIDTH = 900;
+    public static  float HEIGHT = 700;
     PositionAPI pos;
     float oppacity = 0.0f;
     Color bgColor = new Color(6, 35, 40, 42);
@@ -26,7 +28,6 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
     public static final float ENTRY_HEIGHT = 40;
     public static final float ENTRY_WIDTH = WIDTH - 7f;
     public static final float CONTENT_HEIGHT = 80;
-    protected InteractionDialogAPI dialog;
     protected CustomVisualDialogDelegate.DialogCallbacks callbacks;
     protected CustomPanelAPI panel;
     protected CustomPanelAPI mainPanel;
@@ -45,7 +46,11 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
     private TooltipMakerAPI headerTooltip;
     private CustomPanelAPI anchorForImage;
     private CustomPanelAPI panelWithDescription;
-
+    InteractionDialogAPI dialogAPI;
+    IntelUIAPI ui;
+public AoTDColonyEventOutcomeUI(IntelUIAPI ui){
+    this.ui = ui;
+}
 
     @Override
     public void positionChanged(PositionAPI position) {
@@ -132,19 +137,21 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
 
     @Override
     public void processInput(List<InputEventAPI> events) {
-        //this works for keyboard events, but does not seem to capture other UI events like button presses, thus why we use advance()
-//        for (InputEventAPI event : events) {
-//            if (event.isConsumed()) continue;
-//            //is ESC is pressed, close the custom UI panel and the blank IDP we used to create it
-//            if (event.isKeyDownEvent() && event.getEventValue() == Keyboard.KEY_ESCAPE ) {
-//                event.consume();
-//                callbacks.dismissDialog();
-//                dialog.dismiss();
-//
-//                return;
-//
-//            }
-//        }
+            if(eventToSolve.daysToMakeDecision<=0){
+                for (InputEventAPI event : events) {
+                    if (event.isConsumed()) continue;
+                    //is ESC is pressed, close the custom UI panel and the blank IDP we used to create it
+                    if (event.isKeyDownEvent() && event.getEventValue() == Keyboard.KEY_ESCAPE ) {
+                        event.consume();
+                        callbacks.dismissDialog();
+                        buttons.clear();
+                        dialogAPI.dismiss();
+                        return;
+
+                    }
+                }
+            }
+
     }
 
     @Override
@@ -155,8 +162,7 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
     public void init(CustomPanelAPI panel, CustomVisualDialogDelegate.DialogCallbacks callbacks, InteractionDialogAPI dialog) {
         this.callbacks = callbacks;
         this.panel = panel;
-        this.dialog = dialog;
-
+        this.dialogAPI = dialog;
         reset();
 
 
@@ -173,7 +179,6 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
         }
         mainPanel = this.panel.createCustomPanel(WIDTH, HEIGHT, null);
         createUIForDecision(panel);
-        dialog.setOpacity(0.95f);
 
     }
 
@@ -205,6 +210,18 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
         anch.addImage(Global.getSettings().getSpriteName("aotd_colony_event",eventToSolve.getSpec().getImage()),10f);
         anchorForImage.addUIElement(anch).inTL(-10,-10);
         eventToSolve.overrideOptions();
+        String days = "days";
+        if(eventToSolve.daysToMakeDecision<=1){
+            days="day";
+        }
+        if(eventToSolve.daysToMakeDecision > 0){
+            panelTooltip.addPara("You can leave this menu by pressing ESC if you are unsure of your decision, you have %s "+days+" to make final decision",0,Misc.getTooltipTitleAndLightHighlightColor(),Color.ORANGE, String.valueOf(Math.round(eventToSolve.daysToMakeDecision)));
+        }
+        else{
+            panelTooltip.addPara("You must decide now!",0,Misc.getNegativeHighlightColor(),Color.ORANGE, String.valueOf((int)eventToSolve.daysToMakeDecision));
+        }
+
+        panelTooltip.addSpacer(5f);
         for (Map.Entry<String, String> optionEntry : eventToSolve.getLoadedOptions().entrySet()) {
             CustomPanelAPI optionButtonPanel = panel.createCustomPanel(ENTRY_WIDTH, ENTRY_HEIGHT, new ButtonReportingCustomPanel(this));
             TooltipMakerAPI anchor = optionButtonPanel.createUIElement(ENTRY_WIDTH, ENTRY_HEIGHT, false);
@@ -231,7 +248,7 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
         panelWithDescription.addUIElement(descriptionTooltip).inTL(0,0);
         this.mainPanel.addUIElement(headerTooltip).inTL(0, 0);
         this.mainPanel.addComponent(panelWithDescription).inTL(504, HEIGHT * 0.07f);
-        this.mainPanel.addUIElement(panelTooltip).inTL(0, HEIGHT * 0.52f);
+        this.mainPanel.addUIElement(panelTooltip).inTL(0, HEIGHT * 0.52f-10);
         this.mainPanel.addComponent(anchorForImage).inTL(5,HEIGHT*0.07f);
         if (selected != null) {
             TooltipMakerAPI panelWithOutcomes = this.mainPanel.createUIElement(WIDTH, HEIGHT * 0.14f, true);
@@ -272,8 +289,11 @@ public class AoTDColonyEventOutcomeUI implements CustomUIPanelPlugin {
             if(AoTDColonyEventManager.getInstance().lastEvent>=45){
                 AoTDColonyEventManager.getInstance().lastEvent/=2;
             }
-            callbacks.dismissDialog();
-            dialog.dismiss();
+            buttons.clear();
+            dialogAPI.dismiss();
+            if(ui!=null){
+                ui.recreateIntelUI();
+            }
             return;
         }
         reset();

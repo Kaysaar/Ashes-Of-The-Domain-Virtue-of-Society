@@ -31,7 +31,7 @@ public class TectonicDisasterEvent extends AoTDColonyEvent {
             }
         }
         int random = new Random().nextInt(4);
-        return super.canOccur(marketAPI)&&haveMantleBore&&marketAPI.hasCondition(Conditions.EXTREME_TECTONIC_ACTIVITY)&&random==1&&!marketAPI.hasCondition("tectonic_destabilization");
+        return false;
     }
 
     @Override

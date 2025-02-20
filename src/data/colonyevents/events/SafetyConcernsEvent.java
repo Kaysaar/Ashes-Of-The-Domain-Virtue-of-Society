@@ -9,14 +9,7 @@ import data.colonyevents.models.AoTDColonyEvent;
 public class SafetyConcernsEvent extends AoTDColonyEvent {
     @Override
     public boolean canOccur(MarketAPI marketAPI) {
-        boolean hasTag = false;
-        for (Industry industry : marketAPI.getIndustries()) {
-            if(industry.getSpec().hasTag("heavyindustry")||industry.getSpec().hasTag("lightindustry")){
-                hasTag= true;
-            }
-        }
-
-        return super.canOccur(marketAPI)&&hasTag&&marketAPI.getHazardValue()>=1.0f&&marketAPI.getSize()>4;
+        return false;
     }
 
     @Override

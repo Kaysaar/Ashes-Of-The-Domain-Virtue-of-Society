@@ -11,7 +11,7 @@ import data.colonyevents.models.BaseEventCondition;
 import java.util.Map;
 
 public class BreakFromEventsCondition extends BaseEventCondition {
-    public static float timeInBetween = 180f;
+    public static float timeInBetween = 220;
     public void apply(String id) {
 
     }

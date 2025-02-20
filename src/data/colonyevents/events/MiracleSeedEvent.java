@@ -3,6 +3,7 @@ package data.colonyevents.events;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.impl.campaign.econ.impl.Farming;
 import com.fs.starfarer.api.impl.campaign.econ.impl.PopulationAndInfrastructure;
 import com.fs.starfarer.api.impl.campaign.econ.impl.Spaceport;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
@@ -38,7 +39,7 @@ public class MiracleSeedEvent extends AoTDColonyEvent {
 
         boolean hasTag = false;
         for (Industry industry : marketAPI.getIndustries()) {
-            if (industry.getSpec().hasTag("farming")) {
+            if (industry.getSpec().hasTag("farming")||industry instanceof Farming) {
                 hasTag = true;
                 break;
             }
@@ -250,7 +251,7 @@ public class MiracleSeedEvent extends AoTDColonyEvent {
         }
         if (currentDecision.equals("miracle_seed_3b1")) {
             String token = currentlyAffectedMarket.addCondition("miracle_seed_food_apply");
-            MiracleSeedApplier applier = (MiracleSeedApplier) currentlyAffectedMarket.getCondition(token).getPlugin();
+            MiracleSeedApplier applier = (MiracleSeedApplier) currentlyAffectedMarket.getSpecificCondition(token).getPlugin();
             applier.setShouldAddRichFarmland(false);
         }
         if (currentDecision.equals("miracle_seed_3b2")) {

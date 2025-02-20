@@ -6,6 +6,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.AICoreAdminPlugin;
 import com.fs.starfarer.api.campaign.listeners.ListenerManagerAPI;
 import com.fs.starfarer.api.impl.campaign.intel.events.HostileActivityEventIntel;
+import data.colonyevents.listeners.AoTDTrackerInit;
 import data.colonyevents.listeners.UAFEventConditionListener;
 import data.colonyevents.manager.AoTDColonyEventAssigner;
 import data.colonyevents.manager.AoTDColonyEventManager;
@@ -32,6 +33,7 @@ public class AoTDVoSModPlugin extends BaseModPlugin {
             l.addListener(new AoTDColonyEventUIListener());
 
         }
+        l.addListener(new AoTDTrackerInit(),true);
 
     }
 

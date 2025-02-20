@@ -52,8 +52,14 @@ public class AoTDColonyEvent  {
     public boolean canOccur(MarketAPI marketAPI){
         return !marketAPI.hasCondition("fired_event");
     }
-    public void generateDescriptionOfEvent(TooltipMakerAPI tooltip){
+    public void applyBeforeDecision(){
 
+    }
+    public boolean canOccurGuaranteed(MarketAPI marketAPI){
+        return true;
+    }
+    public void generateDescriptionOfEvent(TooltipMakerAPI tooltip){
+        tooltip.addSpacer(5f);
     }
     public void executeDecision(String currentDecision){
     }

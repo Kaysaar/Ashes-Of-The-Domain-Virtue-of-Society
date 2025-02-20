@@ -12,16 +12,7 @@ import java.awt.*;
 public class TriTachyonInvestmentEvent extends AoTDColonyEvent {
     @Override
     public boolean canOccur(MarketAPI marketAPI) {
-        boolean occur = marketAPI.getNetIncome()>=20000;
-        boolean goodRelations = false;
-        for (MarketAPI api : Global.getSector().getEconomy().getMarketsCopy()) {
-            if(api.getFactionId().equals(Factions.TRITACHYON)){
-                if(api.getFaction().getRepInt(Global.getSector().getPlayerFaction().getId())>=20){
-                    goodRelations =true;
-                }
-            }
-        }
-        return goodRelations && occur && marketAPI.isFreePort() && !marketAPI.hasIndustry("tt_hq")&& !marketAPI.hasCondition("tt_smaller_investment") && !marketAPI.getMemory().is("$aotd_declined_TT_offer", true)&&super.canOccur(marketAPI);
+      return false;
     }
 
     @Override

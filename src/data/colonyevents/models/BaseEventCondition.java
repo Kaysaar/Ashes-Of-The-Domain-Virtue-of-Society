@@ -27,11 +27,15 @@ public abstract class BaseEventCondition extends BaseMarketConditionPlugin {
 
     public void removeWhenPassCertainTime(float amountOfDaysPassed){
         if((int)timeSincePlaced>=(int)amountOfDaysPassed){
-            isToBeRemoved = true;
-            unapply(null);
-            market.removeCondition(condition.getId());
+            clearCondition();
             return;
         }
+    }
+
+    public void clearCondition() {
+        isToBeRemoved = true;
+        unapply(null);
+        market.removeCondition(condition.getId());
     }
 
     @Override

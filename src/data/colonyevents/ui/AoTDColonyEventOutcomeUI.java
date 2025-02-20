@@ -163,6 +163,7 @@ public AoTDColonyEventOutcomeUI(IntelUIAPI ui){
         this.callbacks = callbacks;
         this.panel = panel;
         this.dialogAPI = dialog;
+        eventToSolve.applyBeforeDecision();
         reset();
 
 

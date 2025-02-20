@@ -189,8 +189,7 @@ public class AoTDColonyEventManager {
             logger.info("Passed first interval of guaranteed event");
             AoTDGuarantedEvent guarantedEvent = popFirstGuaranteedEvent();
             AoTDColonyEvent event = pickGuaranteedEvent(guarantedEvent);
-
-            if (event != null&& checkForMarketExistence(event)) {
+            if (event != null&& checkForMarketExistence(event)&&event.canOccurGuaranteed(event.currentlyAffectedMarket)) {
                 onGoingEvent = event;
                 onGoingEvent.daysToMakeDecision = 3;
                 lastEvent = intervalMin - 5;

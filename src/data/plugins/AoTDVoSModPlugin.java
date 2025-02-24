@@ -4,8 +4,11 @@ package data.plugins;
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.AICoreAdminPlugin;
+import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.campaign.listeners.ListenerManagerAPI;
 import com.fs.starfarer.api.impl.campaign.intel.events.HostileActivityEventIntel;
+import data.colonyevents.conditions.SpecialItemOnIndustryTracker;
 import data.colonyevents.listeners.AoTDTrackerInit;
 import data.colonyevents.listeners.UAFEventConditionListener;
 import data.colonyevents.manager.AoTDColonyEventAssigner;
@@ -64,7 +67,16 @@ public class AoTDVoSModPlugin extends BaseModPlugin {
                 Global.getSector().addScript(new ThetaCoreDeceptiveMeasuresFactorInserter());
             }
         }
-
+        if(!Global.getSector().getMemory().contains("$aotd_item_fix")){
+           Global.getSector().getMemory().set("$aotd_item_fix", true);
+            for (MarketAPI marketAPI : Global.getSector().getEconomy().getMarketsCopy()) {
+                if(marketAPI.hasCondition("aotd_item_tracker")){
+                    MarketConditionAPI conditionAPI = marketAPI.getCondition("aotd_item_tracker");
+                    SpecialItemOnIndustryTracker tracker = (SpecialItemOnIndustryTracker) conditionAPI.getPlugin();
+                    tracker.data.clear();
+                }
+            }
+        }
 
     }
 

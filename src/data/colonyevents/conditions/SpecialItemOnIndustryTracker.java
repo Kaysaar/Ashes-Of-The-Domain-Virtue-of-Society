@@ -52,7 +52,7 @@ public class SpecialItemOnIndustryTracker extends BaseMarketConditionPlugin2 {
             }
         }
     }
-    LinkedHashMap<String,IndustryItemTrackerData>data = new LinkedHashMap<>();
+    public LinkedHashMap<String,IndustryItemTrackerData>data = new LinkedHashMap<>();
     IntervalUtil util = new IntervalUtil(2.5f,2.5f);
     public float getDaysSinceItemInstalled(String itemId,String industryId){
         if(data.containsKey(industryId)){
@@ -70,7 +70,7 @@ public class SpecialItemOnIndustryTracker extends BaseMarketConditionPlugin2 {
         util.advance(amount);
         if(util.intervalElapsed()){
             for (Industry industry : market.getIndustries()) {
-                if(!data.containsKey(industry.getId())){
+                if(!data.containsKey(industry.getSpec().getId())){
                     data.put(industry.getSpec().getId(),new IndustryItemTrackerData(null));
                 }
                 if(industry.getSpecialItem()!=null){

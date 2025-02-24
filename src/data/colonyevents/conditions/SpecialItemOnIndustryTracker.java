@@ -52,6 +52,12 @@ public class SpecialItemOnIndustryTracker extends BaseMarketConditionPlugin2 {
             }
         }
     }
+
+    @Override
+    public boolean showIcon() {
+        return false;
+    }
+
     public LinkedHashMap<String,IndustryItemTrackerData>data = new LinkedHashMap<>();
     IntervalUtil util = new IntervalUtil(2.5f,2.5f);
     public float getDaysSinceItemInstalled(String itemId,String industryId){
